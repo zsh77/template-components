@@ -1,0 +1,10 @@
+.accordionBody {
+  transition: max-height 0.35s;
+  & > * {
+    @apply m-0 text-justify;
+  }
+}
+.accordionRadio:checked + .accordionBody {
+  @apply max-h-screen;
+  transition: max-height 1.2s;
+}

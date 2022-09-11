@@ -1,7 +1,7 @@
-import Header from 'Modules/Header/Header'
 import React from 'react'
+import Header from 'Modules/Header/Header'
 
-const MainLayout = (props) => {
+const UserPanelLayout = (props) => {
   const { children } = props
   return (
     <div className="min-h-screen">
@@ -13,4 +13,4 @@ const MainLayout = (props) => {
   )
 }
 
-export default MainLayout
+export default UserPanelLayout

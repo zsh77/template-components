@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import MainLayout from "../Layout/MainLayout/MainLayout";
+import type { NextPage } from 'next'
+import Head from 'next/head'
 
-import Counter from "../Modules/Counter/Counter";
+import MainLayout from 'Layout/MainLayout/MainLayout'
+import Accordion from 'Components/Accordion/Accordion'
 
 const IndexPage: NextPage = () => {
   return (
@@ -12,11 +12,26 @@ const IndexPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainLayout>
-        <Counter />
-        <div className="text-red-400">aaaa</div>
+        <Accordion
+          data={[
+            {
+              title: 'لورم ایپسوم',
+              text: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.',
+            },
+            {
+              title: 'لورم ایپسوم',
+              text: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.',
+            },
+            {
+              title: <p>لورم ایپسوم</p>,
+              text: 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.',
+            },
+          ]}
+          id="asdasd"
+        />
       </MainLayout>
     </div>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage

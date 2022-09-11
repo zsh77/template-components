@@ -1,0 +1,57 @@
+@use 'sass:math';
+
+.ButtonRoot {
+  @apply relative py-2 px-8 cursor-pointer overflow-hidden block whitespace-nowrap;
+  @apply text-primary-reverse bg-primary;
+  min-width: min-content;
+  // @include mixin.font-size('title3');
+  &:focus {
+    @apply outline-none;
+  }
+  //   @apply;
+  // @include mixin.down('sm') {
+  //     padding: 8px 20px;
+  //     &::after {
+  //         position: absolute;
+  //         top: 50%;
+  //         left: 50%;
+  //         transform: translate(-50%, -50%);
+  //         content: '';
+  //         width: 500px;
+  //         height: 500px;
+  //         border-radius: 50%;
+  //         opacity: 0;
+  //         background-color: rgba(255, 255, 255, 0.25);
+  //         transition: all 0.8s ease-in-out;
+  //     }
+  //     &:active::after {
+  //         width: 0;
+  //         height: 0;
+  //         opacity: 1;
+  //         transition: 0s;
+  //     }
+  // }
+}
+.fullWidth {
+  width: 100%;
+  padding: 8px 20px;
+}
+.iconButton {
+  height: unset !important;
+  padding: 0;
+}
+.containsIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+// @each $name, $size in var.$button-size-name {
+//   .ButtonSize-#{$name}:not(.iconButton) {
+//     min-height: $size;
+//   }
+// }
+.minimalPadding {
+  padding: 8px 20px;
+}
+
+// @include mixin.btnColorVariant;

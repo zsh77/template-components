@@ -1,0 +1,28 @@
+.triggerEl {
+  @apply relative inline-block duration-300;
+
+  &:hover + .tooltip {
+    @apply flex;
+  }
+}
+
+.tooltip {
+  @apply absolute hidden w-48 px-2 py-1 bg-gray-700 rounded-lg text-center text-white max-w-screen-sm hover:flex;
+  @apply before:content-[''] before:absolute before:border-gray-700 before:border-8;
+}
+.top {
+  @apply -top-2 -left-1 -translate-y-full;
+  @apply before:left-3 before:-bottom-4  before:border-x-transparent before:border-b-transparent;
+}
+.bottom {
+  @apply -left-1 top-[100%] translate-y-2;
+  @apply before:-top-4  before:left-3  before:border-x-transparent before:border-t-transparent;
+}
+.right {
+  @apply -top-1 -right-3 translate-x-full;
+  @apply before:top-3  before:right-[100%]  before:border-y-transparent before:border-l-transparent;
+}
+.left {
+  @apply -top-1 -left-3 -translate-x-full;
+  @apply before:top-3  before:-right-4  before:border-y-transparent before:border-r-transparent;
+}
