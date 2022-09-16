@@ -1,7 +1,7 @@
 .accordionBody {
   transition: max-height 0.35s;
   & > * {
-    @apply m-0 text-justify;
+    @apply m-0 pb-3 text-justify;
   }
 }
 .accordionRadio:checked + .accordionBody {

@@ -1,10 +1,4 @@
-import {
-  Fragment,
-  FunctionComponent,
-  HTMLAttributes,
-  ReactNode,
-  useState,
-} from 'react'
+import { FC, HTMLAttributes, ReactNode, useState } from 'react'
 
 import Text from 'Components/Text/Text'
 import classJoin from 'Utils/classJoin'
@@ -26,7 +20,7 @@ interface IAccordionProps extends Omit<HTMLAttributes<Element>, 'id'> {
   defaultOpenIndex?: string
 }
 
-const Accordion: FunctionComponent<IAccordionProps> = (props) => {
+const Accordion: FC<IAccordionProps> = (props) => {
   const {
     data,
     id,
@@ -48,10 +42,10 @@ const Accordion: FunctionComponent<IAccordionProps> = (props) => {
   return (
     <section id={id}>
       {data.map((el, i) => (
-        <Fragment key={`${id}-${i}`}>
+        <div key={`${id}-${i}`} className="border-b border-primary">
           <div
             className={[
-              'm-0 flex align-center py-4 cursor-pointer border-b border-primary',
+              'm-0 flex align-center py-4 cursor-pointer',
               titleClassName,
               selectedIndex === `${id}-${i}` ? titleOpenClassName : '',
             ].join(' ')}
@@ -90,7 +84,7 @@ const Accordion: FunctionComponent<IAccordionProps> = (props) => {
               el?.children || ''
             )}
           </div>
-        </Fragment>
+        </div>
       ))}
     </section>
   )
