@@ -1,0 +1,12 @@
+.switch {
+  @apply w-11 h-5 bg-gray-200 rounded-full;
+  @apply after:content-[''] after:absolute after:top-[3px] after:right-[3px] after:bg-white after:rounded-full after:h-3.5 after:w-3.5 after:transition-all;
+}
+
+.checkbox:checked + .switch {
+  @apply after:-translate-x-6 bg-primary;
+}
+
+.label {
+  @apply mr-2 text-sm font-medium;
+}

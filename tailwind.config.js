@@ -2,6 +2,7 @@
 
 module.exports = {
   content: ['./src/**/*.{tsx,ts,js,scss}'],
+  darkMode: 'media',
   theme: {
     direction: 'rtl',
     // fontFamily: {

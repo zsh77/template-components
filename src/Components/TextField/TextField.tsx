@@ -11,7 +11,7 @@ export interface ITextFieldProps
   elementClassName?: string
   labelClassName?: string
   id: string
-  element?: 'input' | 'textarea'
+  element?: 'input' | 'textarea' | 'select'
 
   required?: boolean
   error?: boolean
@@ -31,6 +31,7 @@ const TextField: FC<ITextFieldProps> = (props) => {
     helpText,
     required,
     className,
+    children,
 
     endIcon,
     ...otherProps
@@ -39,17 +40,21 @@ const TextField: FC<ITextFieldProps> = (props) => {
   return (
     <div className={className}>
       <div className="relative">
-        {createElement(element, {
-          id,
-          placeholder: ' ',
-          className: classJoin([
-            styles.input,
-            styles[variant + '-input'],
-            error && styles.error,
-            elementClassName,
-          ]),
-          ...otherProps,
-        })}
+        {createElement(
+          element,
+          {
+            id,
+            placeholder: ' ',
+            className: classJoin([
+              styles.input,
+              styles[variant + '-input'],
+              error && styles.error,
+              elementClassName,
+            ]),
+            ...otherProps,
+          },
+          element === 'select' ? children : null
+        )}
         <label
           htmlFor={id}
           className={classJoin([
@@ -72,4 +77,8 @@ const TextField: FC<ITextFieldProps> = (props) => {
 
 export default TextField
 
-TextField.defaultProps = { label: '', variant: 'outlined', element: 'input' }
+TextField.defaultProps = {
+  label: '',
+  variant: 'outlined',
+  element: 'input',
+}

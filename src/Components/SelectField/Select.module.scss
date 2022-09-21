@@ -1,0 +1,34 @@
+.selectField {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  @apply w-[200px];
+}
+
+.optionsList {
+  @apply absolute -mt-5 w-full rounded-md text-sm bg-white border-solid border-gray-300 max-h-0 overflow-auto z-50;
+  transition: max-height 0.1s ease-in-out;
+
+  &.active {
+    @apply max-h-[160px] border;
+    transition: max-height 0.25s ease-in-out;
+  }
+}
+
+.optionRender {
+  @apply flex items-center p-2 min-h-[40px] hover:bg-gray-200 cursor-pointer;
+}
+
+/* width */
+.optionsList::-webkit-scrollbar {
+  @apply w-[6px];
+}
+/* Track */
+.optionsList::-webkit-scrollbar-track {
+  @apply bg-gray-200 rounded;
+}
+
+/* Handle */
+.optionsList::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded;
+}
