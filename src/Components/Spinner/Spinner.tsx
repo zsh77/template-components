@@ -13,12 +13,7 @@ const Spinner: FC<ISpinnerProps> = (props) => {
   return (
     <div role="status">
       <svg
-        className={classJoin([
-          'inline animate-spin fill-blue-600',
-          size,
-          color,
-          className,
-        ])}
+        className={classJoin(['inline animate-spin', size, color, className])}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

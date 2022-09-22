@@ -21,4 +21,4 @@ export const Small = Template.bind({})
 Small.args = { size: 'w-5 h-5' }
 
 export const Color = Template.bind({})
-Color.args = { color: 'text-gray-200 fill-red-400' }
+Color.args = { color: 'text-gray-200 fill-red-600' }

@@ -1,0 +1,39 @@
+.wholeWindow {
+  @apply flex items-center justify-center opacity-100 visible w-screen h-screen bg-gray-400/25 backdrop-blur fixed top-0 right-0 z-50;
+  &.off {
+    @apply hidden;
+  }
+}
+.modal {
+  @apply bg-white opacity-100 rounded-md visible relative p-3 py-0 md:p-5 md:py-0 w-full flex flex-col;
+  max-height: calc(100vh - 40px);
+}
+
+.header {
+  @apply h-6 pt-2;
+  .closeIcon {
+    @apply mr-auto;
+  }
+}
+
+.body {
+  @apply overflow-auto flex-1 h-auto;
+}
+
+.multipleButtons {
+  @apply flex justify-center items-center flex-wrap bg-white z-10 p-2 w-full;
+  & > button {
+    @apply mb-1 ml-2 last-of-type:ml-0;
+  }
+}
+
+// sizes
+.sm {
+  @apply w-full m-3 max-w-none sm:w-[500px] sm:max-w-[95%] sm:m-0;
+}
+.md {
+  @apply w-full m-3 max-w-none md:w-[720px] md:max-w-[75%];
+}
+.lg {
+  @apply w-full m-3 max-w-none md:w-[720px] lg:w-[900px] lg:max-w-[75%];
+}

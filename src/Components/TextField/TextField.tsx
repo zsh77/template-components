@@ -49,6 +49,7 @@ const TextField: FC<ITextFieldProps> = (props) => {
               styles.input,
               styles[variant + '-input'],
               error && styles.error,
+              endIcon && styles.withEndIcon,
               elementClassName,
             ]),
             ...otherProps,
@@ -60,8 +61,6 @@ const TextField: FC<ITextFieldProps> = (props) => {
           className={classJoin([
             styles.label,
             styles[variant + '-label'],
-            error && styles.error,
-            endIcon && styles.withEndIcon,
             labelClassName,
           ])}
         >
