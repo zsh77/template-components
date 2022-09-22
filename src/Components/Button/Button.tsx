@@ -19,6 +19,7 @@ export interface IButtonProps
   color?: ButtonColorsType
   className?: string
   fullWidth?: boolean
+  disabled?: boolean
   size?: ButtonSizesType
   startIcon?: string
   icon?: string
@@ -34,10 +35,11 @@ const Button: FC<IButtonProps> = (props) => {
     color,
     className,
     children,
-    icon,
     startIcon,
     size,
     fullWidth,
+    disabled,
+    icon,
     iconColor,
     iconSize,
     ...otherProps
@@ -54,13 +56,19 @@ const Button: FC<IButtonProps> = (props) => {
         styles[color],
         styles[variant],
         styles[`btn-size-${size}`],
-        fullWidth ? ' w-full px-5 py-2' : '',
+        fullWidth ? ' w-full' : '',
+        disabled ? styles.disabled : '',
         isIconButton ? '!p-0' : '',
-        (startIcon || icon) && isIconButton ? styles.containsIcon : '',
+        startIcon || icon
+          ? isIconButton
+            ? styles.iconButton
+            : styles.containsIcon
+          : '',
         className || '',
         variant === 'link' ? 'px-2 py-5' : '',
       ]),
       ...otherProps,
+      disabled,
     },
     <>
       {startIcon && (

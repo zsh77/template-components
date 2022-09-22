@@ -1,6 +1,8 @@
 .ButtonRoot {
   @apply relative px-4 cursor-pointer rounded-lg overflow-hidden block whitespace-nowrap focus:outline-none;
 }
+
+// variants
 .filled {
   &.primary {
     @apply text-primary-reverse bg-primary;
@@ -13,6 +15,10 @@
   }
   &.white {
     @apply text-black bg-white;
+  }
+
+  &.disabled {
+    @apply text-gray-600 bg-gray-400;
   }
 }
 .outlined {
@@ -29,8 +35,11 @@
   &.white {
     @apply text-white border-white;
   }
-}
 
+  &.disabled {
+    @apply text-gray-400 border-gray-400;
+  }
+}
 .link {
   min-height: unset;
   &.primary {
@@ -45,13 +54,35 @@
   &.white {
     @apply text-white;
   }
+
+  &.disabled {
+    @apply text-gray-400;
+  }
 }
 
-.iconButton {
-  height: unset !important;
+// disabled
+.disabled {
+  @apply cursor-not-allowed;
 }
+
+// icon button or with icon
 .containsIcon {
   @apply flex items-center;
+}
+.iconButton {
+  &.btn-size-sm {
+    @apply min-h-[30px] min-w-[30px] text-sm;
+  }
+  &.btn-size-md {
+    @apply min-h-[40px] min-w-[40px];
+  }
+  &.btn-size-lg {
+    @apply min-h-[50px] min-w-[50px];
+  }
+  &.link {
+    height: unset !important;
+    min-height: unset !important;
+  }
 }
 
 // sizes

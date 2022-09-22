@@ -59,3 +59,15 @@ export const Icon = Template.bind({})
 Icon.args = {
   icon: 'x',
 }
+
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  children: 'Button',
+  icon: 'x',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  children: 'Button',
+  disabled: true,
+}
