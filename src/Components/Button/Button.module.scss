@@ -1,57 +1,66 @@
-@use 'sass:math';
-
 .ButtonRoot {
-  @apply relative py-2 px-8 cursor-pointer overflow-hidden block whitespace-nowrap;
-  @apply text-primary-reverse bg-primary;
-  min-width: min-content;
-  // @include mixin.font-size('title3');
-  &:focus {
-    @apply outline-none;
+  @apply relative px-4 cursor-pointer rounded-lg overflow-hidden block whitespace-nowrap focus:outline-none;
+}
+.filled {
+  &.primary {
+    @apply text-primary-reverse bg-primary;
   }
-  //   @apply;
-  // @include mixin.down('sm') {
-  //     padding: 8px 20px;
-  //     &::after {
-  //         position: absolute;
-  //         top: 50%;
-  //         left: 50%;
-  //         transform: translate(-50%, -50%);
-  //         content: '';
-  //         width: 500px;
-  //         height: 500px;
-  //         border-radius: 50%;
-  //         opacity: 0;
-  //         background-color: rgba(255, 255, 255, 0.25);
-  //         transition: all 0.8s ease-in-out;
-  //     }
-  //     &:active::after {
-  //         width: 0;
-  //         height: 0;
-  //         opacity: 1;
-  //         transition: 0s;
-  //     }
-  // }
+  &.secondary {
+    @apply text-black bg-secondary;
+  }
+  &.gray {
+    @apply text-black bg-gray-200;
+  }
+  &.white {
+    @apply text-black bg-white;
+  }
 }
-.fullWidth {
-  width: 100%;
-  padding: 8px 20px;
+.outlined {
+  @apply border-2;
+  &.primary {
+    @apply text-primary border-primary;
+  }
+  &.secondary {
+    @apply text-secondary border-secondary;
+  }
+  &.gray {
+    @apply text-gray-400 border-gray-400;
+  }
+  &.white {
+    @apply text-white border-white;
+  }
 }
+
+.link {
+  min-height: unset;
+  &.primary {
+    @apply text-primary;
+  }
+  &.secondary {
+    @apply text-secondary;
+  }
+  &.gray {
+    @apply text-gray-400;
+  }
+  &.white {
+    @apply text-white;
+  }
+}
+
 .iconButton {
   height: unset !important;
-  padding: 0;
 }
 .containsIcon {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-// @each $name, $size in var.$button-size-name {
-//   .ButtonSize-#{$name}:not(.iconButton) {
-//     min-height: $size;
-//   }
-// }
-.minimalPadding {
-  padding: 8px 20px;
+  @apply flex items-center;
 }
 
-// @include mixin.btnColorVariant;
+// sizes
+.btn-size-sm {
+  @apply min-h-[30px] text-sm;
+}
+.btn-size-md {
+  @apply min-h-[40px];
+}
+.btn-size-lg {
+  @apply min-h-[50px];
+}

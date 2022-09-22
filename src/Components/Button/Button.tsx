@@ -1,67 +1,45 @@
-import {
-  AriaAttributes,
-  ButtonHTMLAttributes,
-  createElement,
-  FunctionComponent,
-} from 'react'
-// import {
-//   createSpacingClassNames,
-//   PaddingAndMargin,
-// } from 'utils/helpers/box/boxHelper'
-// import BBIcon, { IconColorType } from '../BBIcon'
+import { AriaAttributes, ButtonHTMLAttributes, createElement, FC } from 'react'
+
+import Icon from 'Components/Icon/Icon'
+import classJoin from 'Utils/classJoin'
+
 import styles from './Button.module.scss'
 
-export enum ButtonVariantEnum {
-  contained = 'contained',
-  text = 'text',
-  outlined = 'outlined',
-}
-export enum ButtonColorEnum {
-  primary = 'primary',
-  secondary = 'secondary',
-  white = 'white',
-  green = 'green',
-  fadedGreen = 'fadedGreen',
-  blue = 'blue',
-  fadedRed = 'fadedRed',
-}
-enum sizeEnum {
-  xLarge = 'xLarge',
-  large = 'large',
-  medium = 'medium',
-  small = 'small',
-}
+type ButtonVariantsType = 'filled' | 'outlined' | 'link'
+type ButtonColorsType = 'primary' | 'secondary' | 'gray' | 'white'
+type ButtonSizesType =
+  | 'lg' //50px
+  | 'md' //40px
+  | 'sm' //30px
 
-interface IButtonProps extends AriaAttributes, ButtonHTMLAttributes<Element> {
-  variant?: keyof typeof ButtonVariantEnum
-  color?: keyof typeof ButtonColorEnum
+export interface IButtonProps
+  extends AriaAttributes,
+    ButtonHTMLAttributes<Element> {
+  variant?: ButtonVariantsType
+  color?: ButtonColorsType
   className?: string
   fullWidth?: boolean
-  size?: keyof typeof sizeEnum
-  iconColor?: any
-  // iconColor?: IconColorType
-  iconSize?: number
+  size?: ButtonSizesType
   startIcon?: string
   icon?: string
+  iconColor?: string
+  iconSize?: string
   href?: string
   target?: string
-  download?: boolean
-  aType?: string
 }
 
-const Button: FunctionComponent<IButtonProps> = (props) => {
+const Button: FC<IButtonProps> = (props) => {
   const {
     variant,
     color,
     className,
     children,
     icon,
+    startIcon,
     size,
     fullWidth,
-    startIcon,
     iconColor,
     iconSize,
-    aType,
     ...otherProps
   } = props
 
@@ -70,47 +48,47 @@ const Button: FunctionComponent<IButtonProps> = (props) => {
   return createElement(
     otherProps.href ? 'a' : 'button',
     {
-      className: [
+      className: classJoin([
         otherProps.href ? 'noselect' : '',
         styles.ButtonRoot,
-        styles[
-          `btn-${color || ButtonColorEnum.primary}-${
-            variant || ButtonVariantEnum.contained
-          }`
-        ],
-        styles[`ButtonSize-${size || sizeEnum.large}`],
-        fullWidth ? styles.fullWidth : '',
-        isIconButton ? styles.iconButton : '',
-        startIcon || icon ? styles.containsIcon : '',
+        styles[color],
+        styles[variant],
+        styles[`btn-size-${size}`],
+        fullWidth ? ' w-full px-5 py-2' : '',
+        isIconButton ? '!p-0' : '',
+        (startIcon || icon) && isIconButton ? styles.containsIcon : '',
         className || '',
-        variant === 'text' ? styles.minimalPadding : '',
-      ].join(' '),
-      ...(aType && { type: aType }),
+        variant === 'link' ? 'px-2 py-5' : '',
+      ]),
       ...otherProps,
     },
     <>
-      {/* {startIcon && (
-        <BBIcon
+      {startIcon && (
+        <Icon
           icon={startIcon}
           size={iconSize}
-          ml={2}
+          className="ml-2"
           {...(iconColor ? { color: iconColor } : {})}
         />
-      )} */}
+      )}
 
       {children}
 
-      {/* {icon && (
-        <BBIcon
+      {icon && (
+        <Icon
           icon={icon}
-          style={{ verticalAlign: 'middle' }}
+          className={classJoin([
+            'align-middle',
+            isIconButton ? 'mr-0' : 'mr-1',
+          ])}
           size={iconSize}
-          mr={isIconButton ? 0 : 1}
           {...(iconColor ? { color: iconColor } : {})}
         />
-      )} */}
+      )}
     </>
   )
 }
 
 export default Button
+
+Button.defaultProps = { variant: 'filled', color: 'primary', size: 'md' }

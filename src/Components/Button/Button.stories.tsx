@@ -6,32 +6,56 @@ import Button from './Button'
 export default {
   title: 'Button',
   component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof Button>
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  primary: true,
-  label: 'Button',
+  children: 'Button',
+  color: 'primary',
 }
-
 export const Secondary = Template.bind({})
 Secondary.args = {
-  label: 'Button',
+  children: 'Button',
+  color: 'secondary',
+}
+export const Gray = Template.bind({})
+Gray.args = {
+  children: 'Button',
+  color: 'gray',
+}
+export const White = Template.bind({})
+White.args = {
+  children: 'Button',
+  color: 'white',
 }
 
-export const Large = Template.bind({})
-Large.args = {
-  size: 'large',
-  label: 'Button',
+export const Sm = Template.bind({})
+Sm.args = {
+  children: 'Button',
+  size: 'sm',
 }
 
-export const Small = Template.bind({})
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const Md = Template.bind({})
+Md.args = {
+  children: 'Button',
+  size: 'md',
+}
+
+export const Lg = Template.bind({})
+Lg.args = {
+  children: 'Button',
+  size: 'lg',
+}
+
+export const FullWidth = Template.bind({})
+FullWidth.args = {
+  children: 'Button',
+  fullWidth: true,
+}
+
+export const Icon = Template.bind({})
+Icon.args = {
+  icon: 'x',
 }
