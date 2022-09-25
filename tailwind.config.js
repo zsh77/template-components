@@ -15,6 +15,8 @@ module.exports = {
         secondary: '#aa00ff',
         'primary-reverse': '#000',
         gray: { 500: '#4B4B4B', 200: '#F6F6F6' },
+        red:{badge:"#dd0000"},
+        disabled: '#888888',
       },
     },
   },

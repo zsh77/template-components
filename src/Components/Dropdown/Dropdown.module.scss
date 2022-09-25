@@ -1,0 +1,35 @@
+.dropdown {
+  @apply absolute mt-1 rounded-md bg-white border-solid border-gray-300 max-h-0 overflow-auto z-50;
+  transition: max-height 0.1s ease-in-out;
+
+  &.active {
+    @apply max-h-[160px] border;
+    transition: max-height 0.25s ease-in-out;
+  }
+}
+
+// directions
+.rtl {
+  @apply right-0;
+}
+.ltr {
+  @apply left-0;
+}
+
+// sizes
+.sm {
+  @apply w-[200px];
+}
+.md {
+  @apply w-[300px];
+}
+
+.fullPageInMobile {
+  @apply w-full;
+  &.sm {
+    @apply sm:w-[200px];
+  }
+  &.md {
+    @apply sm:w-[300px];
+  }
+}

@@ -1,0 +1,6 @@
+.wrapper{
+  @apply relative;
+}
+.badge {
+  @apply absolute -top-1 -right-1 w-4 h-4 bg-red-badge text-xs flex items-center justify-center rounded-lg z-20 text-white;
+}

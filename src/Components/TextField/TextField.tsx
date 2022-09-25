@@ -1,4 +1,11 @@
-import { createElement, FC, InputHTMLAttributes, ReactNode } from 'react'
+import {
+  createElement,
+  FC,
+  InputHTMLAttributes,
+  ReactElement,
+  ReactNode,
+} from 'react'
+
 import classJoin from 'Utils/classJoin'
 
 import styles from './TextField.module.scss'
@@ -12,11 +19,10 @@ export interface ITextFieldProps
   labelClassName?: string
   id: string
   element?: 'input' | 'textarea' | 'select'
-
   required?: boolean
   error?: boolean
   helpText?: string
-  endIcon?: string
+  endIcon?: string | ReactElement
 }
 
 const TextField: FC<ITextFieldProps> = (props) => {
@@ -32,8 +38,8 @@ const TextField: FC<ITextFieldProps> = (props) => {
     required,
     className,
     children,
-
     endIcon,
+    value,
     ...otherProps
   } = props
 
@@ -45,8 +51,10 @@ const TextField: FC<ITextFieldProps> = (props) => {
           {
             id,
             placeholder: ' ',
+            value,
             className: classJoin([
               styles.input,
+              !value && styles.empty,
               styles[variant + '-input'],
               error && styles.error,
               endIcon && styles.withEndIcon,
@@ -66,7 +74,7 @@ const TextField: FC<ITextFieldProps> = (props) => {
         >
           {label + (required ? ' *' : '')}
         </label>
-        {endIcon && <div className={styles.endIcon}>v</div>}
+        {endIcon && <div className={styles.endIcon}>{endIcon}</div>}
       </div>
 
       <div className={styles.errorText}>{error || ''}</div>

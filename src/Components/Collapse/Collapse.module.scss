@@ -1,0 +1,6 @@
+.collapseBody {
+  @apply overflow-hidden;
+  &.open {
+    @apply h-auto;
+  }
+}

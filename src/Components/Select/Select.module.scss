@@ -1,8 +1,8 @@
 .selectField {
+  @apply w-[200px] cursor-pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  @apply w-[200px];
 }
 
 .optionsList {
@@ -17,18 +17,4 @@
 
 .optionRender {
   @apply flex items-center p-2 min-h-[40px] hover:bg-gray-200 cursor-pointer;
-}
-
-/* width */
-.optionsList::-webkit-scrollbar {
-  @apply w-[6px];
-}
-/* Track */
-.optionsList::-webkit-scrollbar-track {
-  @apply bg-gray-200 rounded;
-}
-
-/* Handle */
-.optionsList::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 rounded;
 }

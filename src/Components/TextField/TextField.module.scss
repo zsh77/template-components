@@ -14,9 +14,14 @@
 
 .input {
   @apply block rounded-lg px-2.5 pb-2.5 pt-4 w-full text-sm appearance-none focus:outline-none border border-gray-300 focus:ring-0;
+  
   &:placeholder-shown + .label {
     @apply scale-100 -translate-y-1/2 top-1/2;
   }
+  &.empty + .label {
+    @apply scale-100 -translate-y-1/2 top-1/2;
+  }
+  
   &:focus + .label {
     @apply -translate-y-4 text-blue-600 px-2 top-2 scale-75;
   }

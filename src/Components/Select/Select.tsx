@@ -2,10 +2,13 @@ import { cloneElement, FC, ReactElement, useEffect, useState } from 'react'
 import TextField, { ITextFieldProps } from 'Components/TextField/TextField'
 import classJoin from 'Utils/classJoin'
 import styles from './Select.module.scss'
+import Icon from 'Components/Icon/Icon'
 
-interface ISelectProps extends Omit<ITextFieldProps, 'onChange'> {
+interface ISelectProps extends Omit<ITextFieldProps, 'onChange' | 'id'> {
+  id: string
   options?: { value: string; label: string }[]
-  optionListclassName?: string
+  optionListClassName?: string
+  textFieldClassName?: string
   optionRender?: ReactElement
   native?: boolean
   onChange: (val: string) => void
@@ -14,12 +17,15 @@ interface ISelectProps extends Omit<ITextFieldProps, 'onChange'> {
 const Select: FC<ISelectProps> = (props) => {
   const {
     className,
-    optionListclassName,
+    optionListClassName,
+    textFieldClassName,
     options,
     optionRender,
     native,
     value,
     onChange,
+    id,
+    endIcon,
     ...otherProps
   } = props
   const [showOptions, setShowOptions] = useState(false)
@@ -51,35 +57,45 @@ const Select: FC<ISelectProps> = (props) => {
   return (
     <div className={classJoin(['relative', className])}>
       <TextField
-        readOnly
-        endIcon={'down_cheveron'}
-        elementClassName={styles.selectField}
+        elementClassName={classJoin([styles.selectField, textFieldClassName])}
         onChange={itemSelection}
+        id={id}
+        endIcon={
+          <label htmlFor={id}>
+            <Icon icon="v" />
+          </label>
+        }
         {...otherProps}
         {...(native
           ? {
               element: 'select',
               value: fieldValue,
-              children: options.map((el, i) => (
-                <option value={el.value} key={i}>
-                  {el.label}
-                </option>
-              )),
+              defaultValue: initialLabel,
+              children: [
+                <option value="" key="null"></option>,
+                ...options.map((el) => (
+                  <option value={el.value} key={el.value}>
+                    {el.label}
+                  </option>
+                )),
+              ],
             }
           : {
+              readOnly: true,
               element: 'input',
               value: initialLabel,
               onFocus: openMenu,
               onBlurCapture: closeMenu,
             })}
-      ></TextField>
+      />
 
       {!native && (
         <div
           className={classJoin([
             styles.optionsList,
-            optionListclassName,
+            optionListClassName,
             showOptions ? styles.active : '',
+            'customScrollbar',
           ])}
         >
           {options.map((el, i) =>
@@ -101,4 +117,4 @@ const Select: FC<ISelectProps> = (props) => {
 
 export default Select
 
-Select.defaultProps = {}
+Select.defaultProps = { endIcon: 'v' }
