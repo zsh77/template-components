@@ -65,7 +65,6 @@ const Button: FC<IButtonProps> = (props) => {
             : styles.containsIcon
           : '',
         className || '',
-        variant === 'link' ? 'px-2 py-5' : '',
       ]),
       ...otherProps,
       disabled,

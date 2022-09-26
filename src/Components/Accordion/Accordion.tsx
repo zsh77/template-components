@@ -3,6 +3,7 @@ import { FC, HTMLAttributes, ReactNode, useState } from 'react'
 import Text from 'Components/Text/Text'
 import classJoin from 'Utils/classJoin'
 import styles from './Accordion.module.scss'
+import Icon from 'Components/Icon/Icon'
 
 interface IAccordionProps extends Omit<HTMLAttributes<Element>, 'id'> {
   data?: {
@@ -11,13 +12,16 @@ interface IAccordionProps extends Omit<HTMLAttributes<Element>, 'id'> {
     icon?: string
     img?: string
     children?: ReactNode
+    titleComp?: (param0, param1?) => void
   }[]
   id: string
   titleClassName?: string
   titleOpenClassName?: string
+  itemWrapperClassName?: string
   bodyClassName?: string
   stayOpen?: boolean
   defaultOpenIndex?: string
+  variant?: 'default' | 'custom'
 }
 
 const Accordion: FC<IAccordionProps> = (props) => {
@@ -29,6 +33,9 @@ const Accordion: FC<IAccordionProps> = (props) => {
     stayOpen = false,
     defaultOpenIndex = '-1',
     titleOpenClassName,
+    itemWrapperClassName,
+    variant,
+    className,
   } = props
 
   const [selectedIndex, setSelectedIndex] = useState(
@@ -40,46 +47,49 @@ const Accordion: FC<IAccordionProps> = (props) => {
   }
 
   return (
-    <section id={id}>
+    <section id={id} className={className}>
       {data.map((el, i) => (
-        <div key={`${id}-${i}`} className="border-b border-primary">
-          <div
-            className={[
-              'm-0 flex align-center py-4 cursor-pointer',
-              titleClassName,
-              selectedIndex === `${id}-${i}` ? titleOpenClassName : '',
-            ].join(' ')}
-            onClick={() => toggleRadio(`${id}-${i}`)}
-          >
-            <Text>{el.title}</Text>
+        <div
+          key={`${id}-${i}`}
+          className={classJoin([
+            'border-b border-primary overflow-hidden',
+            itemWrapperClassName,
+          ])}
+        >
+          {variant === 'default' ? (
+            <div
+              className={classJoin([
+                'm-0 flex align-center py-4 cursor-pointer',
+                titleClassName,
+                selectedIndex === `${id}-${i}` && titleOpenClassName,
+              ])}
+              onClick={() => toggleRadio(`${id}-${i}`)}
+            >
+              <Text>{el.title}</Text>
+              <div className="flex flex-1" />
+              <Icon
+                icon={selectedIndex === `${id}-${i}` ? '^' : 'v'}
+                className="pl-2"
+              />
+            </div>
+          ) : variant === 'custom' ? (
+            <>
+              {el.titleComp(
+                () => toggleRadio(`${id}-${i}`),
+                selectedIndex === `${id}-${i}`
+              )}
+            </>
+          ) : null}
 
-            <div className="flex flex-1" />
-
-            {/* <BBIcon
-              icon={`${
-                selectedIndex === `${id}-${i}` ? 'up' : 'down'
-              }_cheveron`}
-              pl={2}
-            /> */}
-            <div>icon</div>
-          </div>
-          <input
-            type="radio"
-            className={classJoin(['hidden', styles.accordionRadio])}
-            checked={selectedIndex === `${id}-${i}`}
-            onClick={() => toggleRadio(`${id}-${i}`)}
-          />
           <div
             className={classJoin([
-              'max-h-0 overflow-hidden',
               styles.accordionBody,
+              selectedIndex === `${id}-${i}` && styles.open,
               bodyClassName,
             ])}
           >
             {el?.text ? (
-              <Text className="px-3" type="body2">
-                {el.text}
-              </Text>
+              <Text className="px-3">{el.text}</Text>
             ) : (
               el?.children || ''
             )}
@@ -91,3 +101,5 @@ const Accordion: FC<IAccordionProps> = (props) => {
 }
 
 export default Accordion
+
+Accordion.defaultProps = { variant: 'default' }
