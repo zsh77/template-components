@@ -8,19 +8,29 @@ interface ICheckboxProps extends Omit<InputHTMLAttributes<Element>, 'value'> {
   className?: string
   label?: string
   value?: boolean
-  noHover?: boolean
+  variant?: 'default' | 'round'
+  labelClassName?: string
   /**
    * otherProps is contained of property-values whose types are defined in InputHTMLAttributes
    */
 }
 
 const Checkbox: FunctionComponent<ICheckboxProps> = (props) => {
-  const { label, className, value, checked, ...otherProps } = props
+  const {
+    label,
+    className,
+    value,
+    checked,
+    variant,
+    labelClassName,
+    ...otherProps
+  } = props
 
   return (
     <label
       className={classJoin([
         styles.checkboxContainer,
+        variant === 'round' && styles.variantRound,
         'user-select-none',
         className,
       ])}
@@ -37,12 +47,19 @@ const Checkbox: FunctionComponent<ICheckboxProps> = (props) => {
          * onChange={props.onChange}
          */
       />
-      <div className={styles.tickBox}>
+      <div
+        className={classJoin([
+          styles.tickBox,
+          variant === 'round' && styles.variantRound,
+        ])}
+      >
         <span className={styles.tick} />
       </div>
-      <Text className="mr-1">{props.label}</Text>
+      <div className={classJoin(['mr-1', labelClassName])}>{props.label}</div>
     </label>
   )
 }
 
 export default Checkbox
+
+Checkbox.defaultProps = { variant: 'default' }

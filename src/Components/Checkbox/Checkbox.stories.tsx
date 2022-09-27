@@ -33,3 +33,6 @@ Default.args = {}
 
 export const defaultChecked = Template.bind({})
 defaultChecked.args = { defaultChecked: true }
+
+export const variantRound = Template.bind({})
+variantRound.args = { variant: 'round' }

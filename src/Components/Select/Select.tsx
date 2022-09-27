@@ -57,7 +57,11 @@ const Select: FC<ISelectProps> = (props) => {
   return (
     <div className={classJoin(['relative', className])}>
       <TextField
-        elementClassName={classJoin([styles.selectField, textFieldClassName])}
+        elementClassName={classJoin([
+          styles.selectField,
+          'appearance-none',
+          textFieldClassName,
+        ])}
         onChange={itemSelection}
         id={id}
         endIcon={

@@ -1,0 +1,56 @@
+// $size: 24px; // it should be counter of 12 like 12 ,24 36 ..
+
+/* radio button */
+.radioButton {
+  @apply relative ml-2;
+
+  & > input {
+    @apply hidden;
+  }
+}
+/* radio button ends */
+
+/* radio  */
+.radioContainer {
+  @apply flex items-center mb-3 pl-5 cursor-pointer;
+  @apply h-6;
+}
+
+/* Create a custom checkbox */
+.tickBox {
+  @apply bg-white border-gray-350 ml-1 rounded-full relative border-[2.5px];
+  @apply h-6 w-6;
+}
+
+/* Style the tick indicator */
+.tick {
+  @apply absolute hidden border-white top-1/2 right-1/2;
+  @apply h-3 w-1.5;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg) translate(-50%, -60%);
+}
+
+/* On mouse-over */
+.radioContainer:hover .tickBox {
+  @apply bg-gray-300;
+}
+
+/* When the checkbox is checked */
+.radioContainer input:checked ~ .tickBox {
+  @apply bg-primary border-primary;
+  & > .tick {
+    @apply block;
+  }
+  &.variantSquare {
+    @apply bg-white;
+  }
+}
+
+.variantSquare {
+  &.tickBox {
+    @apply rounded-sm;
+  }
+  .tick {
+    @apply border-primary;
+  }
+}

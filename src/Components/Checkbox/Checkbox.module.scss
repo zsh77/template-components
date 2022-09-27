@@ -33,4 +33,16 @@
   & > .tick {
     @apply block;
   }
+  &.variantRound {
+    @apply bg-primary;
+  }
+}
+
+.variantRound {
+  &.tickBox {
+    @apply rounded-full;
+  }
+  .tick {
+    @apply border-white;
+  }
 }
