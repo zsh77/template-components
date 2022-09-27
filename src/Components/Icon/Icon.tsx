@@ -6,13 +6,19 @@ interface IIconProps {
   className?: string
   size?: string
   color?: string
+  onClick?: () => void
+  onFocus?: () => void
 }
 
 const Icon: FC<IIconProps> = (props) => {
-  const { icon, className, size, color } = props
+  const { icon, className, size, color, ...otherProps } = props
 
   return (
-    <div role="icon" className={classJoin([size, color, className])}>
+    <div
+      role="icon"
+      className={classJoin([size, color, className])}
+      {...otherProps}
+    >
       {icon}
     </div>
   )

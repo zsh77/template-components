@@ -1,0 +1,36 @@
+// $size: 24px;
+// $tick_border_width: 2.5px;
+// $tick_height: $size * 0.5;
+// $tick_width: $tick_height * 0.5;
+
+.checkboxContainer {
+  @apply flex items-center mb-3 cursor-pointer;
+  @apply h-6;
+}
+
+/* Create a custom checkbox */
+.tickBox {
+  @apply bg-white  border-gray-350 ml-1 rounded-sm relative border-[2.5px];
+  @apply h-6 w-6;
+}
+
+/* Style the tick indicator */
+.tick {
+  @apply absolute hidden border-primary top-1/2 right-1/2;
+  @apply h-3 w-1.5;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg) translate(-50%, -60%);
+}
+
+/* On mouse-over */
+.checkboxContainer:hover .tickBox {
+  @apply bg-gray-300;
+}
+
+/* When the checkbox is checked */
+.checkboxContainer input:checked ~ .tickBox {
+  @apply border-primary;
+  & > .tick {
+    @apply block;
+  }
+}

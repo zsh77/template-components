@@ -14,7 +14,7 @@ module.exports = {
         primary: '#1fb6ff',
         secondary: '#aa00ff',
         'primary-reverse': '#000',
-        gray: { 500: '#4B4B4B', 200: '#F6F6F6' },
+        gray: { 500: '#4B4B4B',350:"#BABABA", 200: '#F6F6F6' },
         red:{badge:"#dd0000"},
         disabled: '#888888',
       },

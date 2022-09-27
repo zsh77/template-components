@@ -18,3 +18,11 @@ Default.args = { label: 'چیپس' }
 
 export const Color = Template.bind({})
 Color.args = { label: 'چیپس', color: 'gray' }
+
+export const Removable = Template.bind({})
+Removable.args = {
+  label: 'چیپس',
+  color: 'gray',
+  canRemove: true,
+  onRemove: () => {},
+}
