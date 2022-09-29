@@ -4,25 +4,27 @@
 
 // variants
 .filled {
+  @apply border;
   &.primary {
-    @apply text-primary-reverse bg-primary;
+    @apply text-primary-reverse bg-primary border-primary;
   }
   &.secondary {
-    @apply text-black bg-secondary;
+    @apply text-black bg-secondary border-secondary;
   }
   &.gray {
-    @apply text-black bg-gray-200;
+    @apply text-black bg-gray-350 border-gray-350;
   }
   &.white {
-    @apply text-black bg-white;
+    @apply text-black bg-white border-white;
   }
 
   &.disabled {
-    @apply text-white bg-disabled;
+    @apply text-white bg-disabled border-disabled;
   }
 }
+
 .outlined {
-  @apply border-2;
+  @apply border;
   &.primary {
     @apply text-primary border-primary;
   }
@@ -30,7 +32,7 @@
     @apply text-secondary border-secondary;
   }
   &.gray {
-    @apply text-gray-400 border-gray-400;
+    @apply text-gray-350 border-gray-350;
   }
   &.white {
     @apply text-white border-white;
@@ -40,6 +42,7 @@
     @apply text-disabled border-disabled;
   }
 }
+
 .link {
   min-height: unset;
   &.primary {
@@ -49,10 +52,13 @@
     @apply text-secondary;
   }
   &.gray {
-    @apply text-gray-400;
+    @apply text-gray-350;
   }
   &.white {
     @apply text-white;
+  }
+  &.black {
+    @apply text-black;
   }
 
   &.disabled {

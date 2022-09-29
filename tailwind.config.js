@@ -13,8 +13,8 @@ module.exports = {
       colors: {
         primary: '#1fb6ff',
         secondary: '#aa00ff',
-        'primary-reverse': '#000',
-        gray: { 500: '#4B4B4B',350:"#BABABA", 200: '#F6F6F6' },
+        'primary-reverse': '#fff',
+        gray: { 500: '#4B4B4B',350:"#BABABA",250:"#D7D7D7", 200: '#F6F6F6', },
         red:{badge:"#dd0000"},
         disabled: '#888888',
       },

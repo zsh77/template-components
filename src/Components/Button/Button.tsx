@@ -6,7 +6,7 @@ import classJoin from 'Utils/classJoin'
 import styles from './Button.module.scss'
 
 type ButtonVariantsType = 'filled' | 'outlined' | 'link'
-type ButtonColorsType = 'primary' | 'secondary' | 'gray' | 'white'
+type ButtonColorsType = 'primary' | 'secondary' | 'gray' | 'white' | 'black'
 type ButtonSizesType =
   | 'lg' //50px
   | 'md' //40px
@@ -51,7 +51,7 @@ const Button: FC<IButtonProps> = (props) => {
     otherProps.href ? 'a' : 'button',
     {
       className: classJoin([
-        otherProps.href ? 'noselect' : '',
+        otherProps.href ? 'select-none' : '',
         styles.ButtonRoot,
         styles[color],
         styles[variant],
