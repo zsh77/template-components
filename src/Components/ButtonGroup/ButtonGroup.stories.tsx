@@ -51,6 +51,11 @@ Secondary.args = {
   },
 }
 
+export const DefaultChecked = Template.bind({})
+DefaultChecked.args = {
+  defaultChecked: 'bbbb',
+}
+
 export const Gray = Template.bind({})
 Gray.args = {
   buttonProps: () => {

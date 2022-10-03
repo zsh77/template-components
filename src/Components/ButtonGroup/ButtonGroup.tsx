@@ -2,7 +2,7 @@ import Radio, { IRadioProps } from 'Components/Radio/Radio'
 import React, { FC } from 'react'
 import classJoin from 'Utils/classJoin'
 
-const ButtonGroup: FC<IRadioProps> = (props) => {
+const ButtonGroup: FC<IRadioProps> = (props: IRadioProps) => {
   const { buttonProps, ...otherProps } = props
 
   return (
@@ -21,7 +21,7 @@ const ButtonGroup: FC<IRadioProps> = (props) => {
         return (
           <>
             {el}
-            {i !== props.data.length - 1 && (
+            {i !== otherProps.data.length - 1 && (
               <div className="border-l border-l-gray-300" />
             )}
           </>

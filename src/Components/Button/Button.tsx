@@ -48,7 +48,7 @@ const Button: FC<IButtonProps> = (props) => {
   const isIconButton = typeof children === 'undefined'
 
   return createElement(
-    otherProps.href ? 'a' : 'button',
+    otherProps.href || variant === 'link' ? 'a' : 'button',
     {
       className: classJoin([
         otherProps.href ? 'select-none' : '',

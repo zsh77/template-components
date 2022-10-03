@@ -12,17 +12,20 @@ export type dataType = {
 export interface IRadioProps
   extends Omit<
     InputHTMLAttributes<Element>,
-    'checked' | 'name' | 'defaultChecked'
+    'checked' | 'name' | 'defaultChecked' | 'value' | 'onChange'
   > {
   className?: string
   name: string
+  value: string | number
   data: dataType[]
   variant?: 'default' | 'square' | 'button'
   labelClassName?: string
+  onChange: (val?, e?) => void
   buttonProps?: (isChecked?: boolean) => IButtonProps | { className?: string }
 }
 
-const Radio: any = (props: IRadioProps) => {
+// const Radio: any = (props: IRadioProps) => {
+const Radio = (props) => {
   const {
     data = [],
     value,
@@ -49,8 +52,8 @@ const Radio: any = (props: IRadioProps) => {
         key={i}
         id={id}
         type="radio"
-        onChange={() => {
-          !el.disabled && onChange(el.value)
+        onChange={(e) => {
+          !el.disabled && onChange(el.value, e)
         }}
         checked={isChecked}
         className="hidden"
@@ -67,8 +70,8 @@ const Radio: any = (props: IRadioProps) => {
         className={classJoin([styles.radioButton, buttonClassName, className])}
         key={i}
         disabled={el.disabled}
-        onClick={() => {
-          !el.disabled && onChange(el.value)
+        onClick={(e) => {
+          !el.disabled && onChange(el.value, e)
         }}
         {...modifiedButtonProps}
       >
