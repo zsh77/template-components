@@ -24,8 +24,7 @@ export interface IRadioProps
   buttonProps?: (isChecked?: boolean) => IButtonProps | { className?: string }
 }
 
-// const Radio: any = (props: IRadioProps) => {
-const Radio = (props) => {
+const Radio: any = (props: IRadioProps) => {
   const {
     data = [],
     value,

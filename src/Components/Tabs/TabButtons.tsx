@@ -58,6 +58,7 @@ const TabButtonsExample = () => {
 
   return (
     <Tabs
+      name="tabButton"
       value={value}
       onChange={(value, e) => {
         setValue(value)
@@ -66,10 +67,10 @@ const TabButtonsExample = () => {
       variant="button"
       buttonProps={(isChecked) => {
         return {
+          variant: 'link',
           className: classJoin([
             isChecked && '!rounded-none md:border-b-2 md:border-secondary',
           ]),
-          variant: 'link',
         }
       }}
       tabPanelComp={d}

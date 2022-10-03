@@ -6,18 +6,17 @@ export interface ITabsProps extends Omit<IRadioProps, 'data'> {
   className?: string
   tabListClassName?: string
   tabPanelClassName?: string
-  tabList?: any
-  // {
-  //   value: any
-  //   label: string | ReactNode | any
-  //   disabled?: boolean
-  // }[]
+  tabList?: {
+    value: any
+    label: string | ReactNode | any
+    disabled?: boolean
+  }[]
   tabPanelComp?: string | ReactNode
   hasUnderline?: boolean
   underlineClassName?: string
 }
 
-const Tabs = (props) => {
+const Tabs: FC<ITabsProps> = (props) => {
   const {
     className,
     tabListClassName,
