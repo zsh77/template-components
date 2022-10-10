@@ -1,8 +1,8 @@
 .filled-input {
-  @apply bg-gray-300;
+  @apply bg-gray-200;
 }
 .filled-label {
-  @apply bg-gray-300 rounded-md;
+  @apply bg-gray-200 rounded-md;
 }
 
 .outlined-input {
@@ -14,14 +14,16 @@
 
 .input {
   @apply block rounded-lg px-2.5 pb-2.5 pt-4 w-full text-sm appearance-none focus:outline-none border border-gray-300 focus:ring-0;
-  
+
+  &.filled-input {
+    @apply border-gray-200;
+  }
   &:placeholder-shown + .label {
     @apply scale-100 -translate-y-1/2 top-1/2;
   }
   &.empty + .label {
     @apply scale-100 -translate-y-1/2 top-1/2;
   }
-  
   &:focus + .label {
     @apply -translate-y-4 text-blue-600 px-2 top-2 scale-75;
   }
@@ -45,4 +47,8 @@
 
 .errorText {
   @apply mr-1 mt-1 min-h-[20px] text-xs text-red-500;
+}
+
+.disabled {
+  @apply cursor-not-allowed;
 }

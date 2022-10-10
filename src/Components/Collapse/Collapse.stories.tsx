@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Collapse>
 
 const Template: ComponentStory<typeof Collapse> = (args) => (
-  <div className="max-w-full min-h-[50vh] min-w-[350px] flex items-center justify-center">
+  <div className="max-w-full min-h-[50vh] min-w-[350px]">
     <Collapse {...args} />
   </div>
 )

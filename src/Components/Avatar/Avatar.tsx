@@ -1,16 +1,29 @@
-import React, { HTMLAttributes } from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import classJoin from 'Utils/classJoin'
+import styles from './Avatar.module.scss'
 
-export interface IBackdropProps extends HTMLAttributes<Element> {
-  size?: string
+export interface IAvatarProps extends HTMLAttributes<Element> {
+  size?:
+    | 'sm' // 64px
+    | 'md' // 64px
+    | 'lg' // 64px
   image?: string
   className?: string
 }
 
-const Avatar = (props) => {
+const Avatar: FC<IAvatarProps> = (props) => {
   const { className, size, image } = props
 
-  return <div className={classJoin([size, className])}>{image}</div>
+  return (
+    <div className={classJoin([styles.avatar, 'bg-rose-300', size, className])}>
+      {image}
+    </div>
+    // <img className={classJoin([styles.avatar, size, className])} src={image}/>
+  )
 }
 
 export default Avatar
+
+Avatar.defaultProps = {
+  size: 'md',
+}

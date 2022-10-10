@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Tabs from './Tabs'
 import useState from 'storybook-addon-state'
 import classJoin from 'Utils/classJoin'
+import TabButtonsExample from './TabButtons'
 
 export default {
   title: 'Tabs',
@@ -114,3 +115,8 @@ Vertical.args = {
     }
   },
 }
+
+const CustomTemplate = () => <TabButtonsExample />
+
+export const tabButtons = CustomTemplate.bind({})
+tabButtons.args = {}

@@ -27,6 +27,7 @@ export interface IButtonProps
   iconSize?: string
   href?: string
   target?: string
+  element?: 'a' | 'button' | 'div'
 }
 
 const Button: FC<IButtonProps> = (props) => {
@@ -42,13 +43,14 @@ const Button: FC<IButtonProps> = (props) => {
     icon,
     iconColor,
     iconSize,
+    element,
     ...otherProps
   } = props
 
   const isIconButton = typeof children === 'undefined'
 
   return createElement(
-    otherProps.href || variant === 'link' ? 'a' : 'button',
+    element || (otherProps.href ? 'a' : 'button'),
     {
       className: classJoin([
         otherProps.href ? 'select-none' : '',

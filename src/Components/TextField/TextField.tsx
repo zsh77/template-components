@@ -40,6 +40,7 @@ const TextField: FC<ITextFieldProps> = (props) => {
     children,
     endIcon,
     value,
+    disabled,
     ...otherProps
   } = props
 
@@ -58,8 +59,10 @@ const TextField: FC<ITextFieldProps> = (props) => {
               styles[variant + '-input'],
               error && styles.error,
               endIcon && styles.withEndIcon,
+              disabled && styles.disabled,
               elementClassName,
             ]),
+            disabled,
             ...otherProps,
           },
           element === 'select' ? children : null

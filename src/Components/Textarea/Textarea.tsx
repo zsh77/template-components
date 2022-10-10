@@ -3,9 +3,8 @@ import TextField, { ITextFieldProps } from 'Components/TextField/TextField'
 import styles from './Textarea.module.scss'
 import classJoin from 'Utils/classJoin'
 
-export interface ITextareaProps extends Omit<ITextFieldProps, 'element'> {
-  element: 'textarea'
-}
+export type ITextareaProps = Omit<ITextFieldProps, 'element'>
+
 const Textarea: FC<ITextareaProps> = (props) => {
   const { elementClassName, labelClassName, ...otherProps } = props
   return (

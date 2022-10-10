@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, useEffect, useRef } from 'react'
+import { FC, HTMLAttributes } from 'react'
 
 import classJoin from 'Utils/classJoin'
 import styles from './Tooltip.module.scss'

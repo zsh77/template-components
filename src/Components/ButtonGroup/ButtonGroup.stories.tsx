@@ -32,10 +32,10 @@ const Template = ({ defaultChecked, data, ...args }: ButtonGroupStory) => {
                 { label: 'dddd', value: 'dddd' },
               ]
         }
+        {...args}
         name="b456"
         value={value}
         onChange={setValue}
-        {...args}
       />
     </div>
   )

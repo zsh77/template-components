@@ -1,6 +1,4 @@
 import { FC, HTMLAttributes, ReactNode, useState } from 'react'
-
-import Text from 'Components/Text/Text'
 import classJoin from 'Utils/classJoin'
 import styles from './Accordion.module.scss'
 import Icon from 'Components/Icon/Icon'
@@ -46,6 +44,8 @@ const Accordion: FC<IAccordionProps> = (props) => {
     setSelectedIndex(selectedIndex === idx ? '-1' : idx)
   }
 
+  const isOpen = (id, i) => selectedIndex === `${id}-${i}`
+
   return (
     <section id={id} className={className}>
       {data.map((el, i) => (
@@ -61,35 +61,27 @@ const Accordion: FC<IAccordionProps> = (props) => {
               className={classJoin([
                 'm-0 flex align-center py-4 cursor-pointer',
                 titleClassName,
-                selectedIndex === `${id}-${i}` && titleOpenClassName,
+                isOpen(id, i) && titleOpenClassName,
               ])}
               onClick={() => toggleRadio(`${id}-${i}`)}
             >
-              <Text>{el.title}</Text>
+              <div>{el.title}</div>
               <div className="flex flex-1" />
-              <Icon
-                icon={selectedIndex === `${id}-${i}` ? '^' : 'v'}
-                className="pl-2"
-              />
+              <Icon icon={isOpen(id, i) ? '^' : 'v'} className="pl-2" />
             </div>
           ) : variant === 'custom' ? (
-            <>
-              {el.titleComp(
-                () => toggleRadio(`${id}-${i}`),
-                selectedIndex === `${id}-${i}`
-              )}
-            </>
+            <>{el.titleComp(() => toggleRadio(`${id}-${i}`), isOpen(id, i))}</>
           ) : null}
 
           <div
             className={classJoin([
               styles.accordionBody,
-              selectedIndex === `${id}-${i}` && styles.open,
+              isOpen(id, i) && styles.open,
               bodyClassName,
             ])}
           >
             {el?.text ? (
-              <Text className="px-3">{el.text}</Text>
+              <div className="px-3">{el.text}</div>
             ) : (
               el?.children || ''
             )}

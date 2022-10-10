@@ -8,17 +8,25 @@ export default {
   component: Icon,
 } as ComponentMeta<typeof Icon>
 
-const Template: ComponentStory<typeof Icon> = (args) => (
-  <div className="max-w-full min-h-[50vh] min-w-[350px] flex items-center justify-center">
-    <Icon {...args} />
-  </div>
-)
+const Template: ComponentStory<typeof Icon> = (args) => {
+  const iconList = ['x', 'v', '^']
+  return (
+    <div className="max-w-full min-h-[50vh] min-w-[350px] flex items-center justify-center flex-wrap">
+      {iconList.map((el) => (
+        <div className="mr-2 p-2 bg-rose-300 text-center">
+          <Icon {...args} icon={el} />
+          <div>{el}</div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export const Default = Template.bind({})
-Default.args = { icon: 'x' }
+Default.args = {}
 
 export const Small = Template.bind({})
-Small.args = { icon: 'x', size: 'text-xs' }
+Small.args = { size: 'text-xs' }
 
 export const Color = Template.bind({})
-Color.args = { icon: 'x', color: 'text-red-400' }
+Color.args = { color: 'text-red-400' }

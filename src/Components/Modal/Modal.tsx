@@ -60,7 +60,8 @@ function Modal(props: IModalProps): JSX.Element {
               onClick={onClose}
               className={styles.closeIcon}
               variant="link"
-              size="small"
+              element="button"
+              size="sm"
             />
           </div>
         ) : null}

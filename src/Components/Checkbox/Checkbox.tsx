@@ -1,4 +1,3 @@
-import Text from 'Components/Text/Text'
 import { FunctionComponent, InputHTMLAttributes } from 'react'
 import classJoin from 'Utils/classJoin'
 

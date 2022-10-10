@@ -4,7 +4,6 @@ import useState from 'storybook-addon-state'
 
 import Button from 'Components/Button/Button'
 import Modal, { IModalProps } from './Modal'
-import Text from 'Components/Text/Text'
 
 interface IModalStory extends IModalProps {
   stateName?: any
@@ -60,7 +59,7 @@ const Template: ComponentStory<typeof Modal> = (args: IModalStory) => {
           ]
         }
       >
-        <Text>
+        <div>
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
           استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
           ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
@@ -82,7 +81,7 @@ const Template: ComponentStory<typeof Modal> = (args: IModalStory) => {
           کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده،
           شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت
           بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ
-        </Text>
+        </div>
       </Modal>
     </>
   )

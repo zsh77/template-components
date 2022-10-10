@@ -1,5 +1,4 @@
 import { FunctionComponent, HTMLAttributes } from 'react'
-import Text from 'Components/Text/Text'
 import classJoin from 'Utils/classJoin'
 
 import styles from './Chips.module.scss'

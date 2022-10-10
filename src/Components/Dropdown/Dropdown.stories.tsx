@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Dropdown> = (args) => (
       {args.children || (
         <>
           {[
-            { value: 'i1', label: 'آیتم شماره ۱' },
+            { value: 'i1', label: 'آیتم شماره 1' },
             { value: 'i2', label: 'آیتم شماره 2' },
             { value: 'i3', label: 'آیتم شماره 3' },
             { value: 'i4', label: 'آیتم شماره 4' },
@@ -35,34 +35,34 @@ const Template: ComponentStory<typeof Dropdown> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  triggerElement: <Button>دراو داون</Button>,
+  triggerElement: <Button>دراپ داون</Button>,
 }
 
 export const sm = Template.bind({})
 sm.args = {
-  triggerElement: <Button>دراو داون</Button>,
+  triggerElement: <Button>دراپ داون</Button>,
   size: 'sm',
 }
 export const md = Template.bind({})
 md.args = {
-  triggerElement: <Button>دراو داون</Button>,
+  triggerElement: <Button>دراپ داون</Button>,
   size: 'md',
 }
 
 export const rtl = Template.bind({})
 rtl.args = {
-  triggerElement: <Button>دراو داون</Button>,
+  triggerElement: <Button>دراپ داون</Button>,
   rtl: 'rtl',
 }
 export const ltr = Template.bind({})
 ltr.args = {
-  triggerElement: <Button>دراو داون</Button>,
+  triggerElement: <Button>دراپ داون</Button>,
   dir: 'ltr',
 }
 
 export const Children = Template.bind({})
 Children.args = {
-  triggerElement: <Button>دراو داون</Button>,
+  triggerElement: <Button>دراپ داون</Button>,
   dir: 'ltr',
   children: (
     <div className="text-center">
