@@ -1,5 +1,8 @@
 .backdrop {
-  @apply fixed top-0 bottom-0 right-0 left-0 z-10 w-screen h-screen overflow-hidden bg-gray-400/50 cursor-default;
+  @apply fixed top-0 bottom-0 w-screen h-screen right-0 left-0 z-10 invisible bg-transparent overflow-hidden cursor-default;
+  &.isOpen {
+    @apply bg-gray-400/50 visible transition-colors duration-300;
+  }
 }
 .transparent {
   @apply bg-transparent;

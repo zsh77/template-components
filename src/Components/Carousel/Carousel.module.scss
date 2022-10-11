@@ -1,12 +1,12 @@
 .carouselParent {
-  @apply md:overflow-hidden;
+  @apply overflow-y-hidden overflow-x-auto md:overflow-x-hidden;
 }
 .carousel {
   @apply flex;
   transition: transform 0.3s;
 }
 .carouselArrow {
-  @apply flex items-center justify-center rounded-full bg-white absolute top-1/2 -translate-y-1/2 z-10 shadow-md;
+  @apply hidden md:flex absolute top-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white z-10 shadow-md;
   &.back {
     @apply right-0;
   }

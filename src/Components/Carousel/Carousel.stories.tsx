@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Carousel>
 
 const Template: ComponentStory<typeof Carousel> = (args) => (
-  <div>
+  <div className="min-h-screen">
     <Carousel
       {...args}
       data={['1', '2', '3', '4', '5', '6', '7', '8', '9']}

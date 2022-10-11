@@ -35,12 +35,13 @@ const Template: ComponentStory<typeof Backdrop> = (args: IBackdropStory) => {
       </Button>
       <Backdrop
         {...args}
-        open={state[args.stateName]}
+        isOpen={state[args.stateName]}
         onClick={() => closeDialog(args.stateName)}
       />
     </div>
   )
 }
+
 export const Default = Template.bind({})
 Default.args = { stateName: 'default' }
 

@@ -31,6 +31,7 @@ Default.args = {
     },
   ],
   id: 'uniq_id',
+  textClassName: 'pb-2',
 }
 
 export const Card = Template.bind({})

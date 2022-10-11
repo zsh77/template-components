@@ -15,6 +15,7 @@ interface IAccordionProps extends Omit<HTMLAttributes<Element>, 'id'> {
   id: string
   titleClassName?: string
   titleOpenClassName?: string
+  textClassName?: string
   itemWrapperClassName?: string
   bodyClassName?: string
   stayOpen?: boolean
@@ -31,6 +32,7 @@ const Accordion: FC<IAccordionProps> = (props) => {
     stayOpen = false,
     defaultOpenIndex = '-1',
     titleOpenClassName,
+    textClassName,
     itemWrapperClassName,
     variant,
     className,
@@ -59,7 +61,7 @@ const Accordion: FC<IAccordionProps> = (props) => {
           {variant === 'default' ? (
             <div
               className={classJoin([
-                'm-0 flex align-center py-4 cursor-pointer',
+                'm-0 flex align-center py-4 pr-3 cursor-pointer',
                 titleClassName,
                 isOpen(id, i) && titleOpenClassName,
               ])}
@@ -81,7 +83,9 @@ const Accordion: FC<IAccordionProps> = (props) => {
             ])}
           >
             {el?.text ? (
-              <div className="px-3">{el.text}</div>
+              <div className={classJoin(['px-3', textClassName])}>
+                {el.text}
+              </div>
             ) : (
               el?.children || ''
             )}

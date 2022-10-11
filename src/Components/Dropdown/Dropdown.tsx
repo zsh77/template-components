@@ -50,7 +50,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 
       {open && (
         <>
-          <Backdrop open={open} onClick={closeMenu} variant="transparent" />
+          <Backdrop isOpen={open} onClick={closeMenu} variant="transparent" />
           <div
             className={classJoin([
               styles.dropdown,
