@@ -17,8 +17,14 @@ const Template: ComponentStory<typeof Spinner> = (args) => (
 export const Default = Template.bind({})
 Default.args = {}
 
+export const StrokeWidth = Template.bind({})
+StrokeWidth.args = { strokeWidth: 6 }
+
+export const Radius = Template.bind({})
+Radius.args = { radius: 30 }
+
 export const Small = Template.bind({})
-Small.args = { size: 'w-5 h-5' }
+Small.args = { strokeWidth: 3, radius: 10 }
 
 export const Color = Template.bind({})
-Color.args = { color: 'text-gray-200 fill-red-600' }
+Color.args = { color: 'stroke-secondary' }

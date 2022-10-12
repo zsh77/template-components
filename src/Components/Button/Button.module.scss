@@ -101,3 +101,8 @@
 .btn-size-lg {
   @apply min-h-[50px];
 }
+
+// loading
+.loaderBg {
+  @apply absolute top-0 right-0 bg-gray-300/70 w-full h-full flex items-center justify-center cursor-wait;
+}

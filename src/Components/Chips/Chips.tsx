@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes } from 'react'
+import { FC, HTMLAttributes } from 'react'
 import classJoin from 'Utils/classJoin'
 
 import styles from './Chips.module.scss'
@@ -14,7 +14,7 @@ interface IChipsProps extends HTMLAttributes<Element> {
   iconClassName?: string
 }
 
-const Chips: FunctionComponent<IChipsProps> = (props) => {
+const Chips: FC<IChipsProps> = (props) => {
   const { label, color, onRemove, canRemove, iconClassName, ...otherProps } =
     props
 

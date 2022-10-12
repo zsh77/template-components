@@ -1,4 +1,4 @@
-import { FunctionComponent, InputHTMLAttributes } from 'react'
+import { FC, InputHTMLAttributes } from 'react'
 import classJoin from 'Utils/classJoin'
 
 import styles from './Checkbox.module.scss'
@@ -14,7 +14,7 @@ interface ICheckboxProps extends Omit<InputHTMLAttributes<Element>, 'value'> {
    */
 }
 
-const Checkbox: FunctionComponent<ICheckboxProps> = (props) => {
+const Checkbox: FC<ICheckboxProps> = (props) => {
   const {
     label,
     className,

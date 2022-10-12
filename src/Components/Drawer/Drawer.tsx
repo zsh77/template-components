@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes, ReactNode } from 'react'
+import { FC, HTMLAttributes, ReactNode } from 'react'
 import Backdrop from 'Components/Backdrop/Backdrop'
 import classJoin from 'Utils/classJoin'
 
@@ -11,7 +11,7 @@ interface IDrawerProps extends Omit<HTMLAttributes<Element>, 'className'> {
   backdropClassName?: (param0?) => string
 }
 
-const Drawer: FunctionComponent<IDrawerProps> = (props) => {
+const Drawer: FC<IDrawerProps> = (props) => {
   const {
     onClose,
     isOpen,

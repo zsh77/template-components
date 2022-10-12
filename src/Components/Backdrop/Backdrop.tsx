@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes } from 'react'
+import { FC, HTMLAttributes } from 'react'
 import classJoin from 'Utils/classJoin'
 import styles from './Backdrop.module.scss'
 
@@ -9,7 +9,7 @@ export interface IBackdropProps extends Omit<HTMLAttributes<Element>, 'id'> {
   className?: string
 }
 
-const Backdrop: FunctionComponent<IBackdropProps> = (props) => {
+const Backdrop: FC<IBackdropProps> = (props) => {
   const { isOpen, onClick, variant, className } = props
   return (
     <div

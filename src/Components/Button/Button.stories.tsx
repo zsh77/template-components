@@ -71,3 +71,10 @@ Disabled.args = {
   children: 'Button',
   disabled: true,
 }
+
+export const IsLoading = Template.bind({})
+IsLoading.args = {
+  children: 'Button',
+  isLoading: true,
+  variant: 'filled',
+}

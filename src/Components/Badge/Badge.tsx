@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes, ReactElement } from 'react'
+import { FC, HTMLAttributes, ReactElement } from 'react'
 import classJoin from 'Utils/classJoin'
 
 import styles from './Badge.module.scss'
@@ -9,7 +9,7 @@ interface IBadgeProps extends HTMLAttributes<Element> {
   color?: string
 }
 
-const Badge: FunctionComponent<IBadgeProps> = (props) => {
+const Badge: FC<IBadgeProps> = (props) => {
   const { content, color, children } = props
 
   return (

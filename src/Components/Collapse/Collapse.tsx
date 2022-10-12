@@ -1,5 +1,5 @@
 import Button from 'Components/Button/Button'
-import { FunctionComponent, HTMLAttributes, useRef, useState } from 'react'
+import { FC, HTMLAttributes, useRef, useState } from 'react'
 import classJoin from 'Utils/classJoin'
 
 import styles from './Collapse.module.scss'
@@ -9,7 +9,7 @@ interface ICollapseProps extends HTMLAttributes<Element> {
   backOnClose?: boolean
 }
 
-const Collapse: FunctionComponent<ICollapseProps> = (props) => {
+const Collapse: FC<ICollapseProps> = (props) => {
   const { children, containerClassName, backOnClose } = props
   const [isOpen, setIsOpen] = useState(false)
   const collapseElement = useRef<HTMLDivElement>()

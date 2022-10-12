@@ -4,6 +4,7 @@ import Icon from 'Components/Icon/Icon'
 import classJoin from 'Utils/classJoin'
 
 import styles from './Button.module.scss'
+import Spinner from 'Components/Spinner/Spinner'
 
 type ButtonVariantsType = 'filled' | 'outlined' | 'link'
 type ButtonColorsType = 'primary' | 'secondary' | 'gray' | 'white' | 'black'
@@ -28,6 +29,7 @@ export interface IButtonProps
   href?: string
   target?: string
   element?: 'a' | 'button' | 'div'
+  isLoading?: boolean
 }
 
 const Button: FC<IButtonProps> = (props) => {
@@ -44,6 +46,7 @@ const Button: FC<IButtonProps> = (props) => {
     iconColor,
     iconSize,
     element,
+    isLoading,
     ...otherProps
   } = props
 
@@ -66,6 +69,7 @@ const Button: FC<IButtonProps> = (props) => {
             ? styles.iconButton
             : styles.containsIcon
           : '',
+        isLoading && 'relative',
         className || '',
       ]),
       ...otherProps,
@@ -93,6 +97,11 @@ const Button: FC<IButtonProps> = (props) => {
           size={iconSize}
           {...(iconColor ? { color: iconColor } : {})}
         />
+      )}
+      {isLoading && (
+        <div className={styles.loaderBg}>
+          <Spinner radius={10} className="transform-none" />
+        </div>
       )}
     </>
   )
