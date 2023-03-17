@@ -12,7 +12,7 @@ export default {
 const Template: ComponentStory<typeof Drawer> = (args) => {
   const [isOpen, setIsOpen] = useState('isOpen', false)
   return (
-    <div className="max-w-full min-h-[50vh] min-w-[350px] flex items-center justify-center">
+    <>
       <Button
         onClick={() => {
           setIsOpen(true)
@@ -34,11 +34,13 @@ const Template: ComponentStory<typeof Drawer> = (args) => {
             <div>Home</div>
             <div>Home</div>
             <div>Home</div>
-            <div>About KindaCode.com</div>
-            <div>About KindaCode.com</div>
-            <div>About KindaCode.com</div>
-            <div>About KindaCode.com</div>
-            <div>About KindaCode.com</div>
+            <div>links</div>
+            <div>links</div>
+            <div>links</div>
+            <div>links</div>
+            <div>links</div>
+            <div>links</div>
+            <div>links</div>
             <div>Contact Us</div>
             <div>Contact Us</div>
             <div>Contact Us</div>
@@ -51,7 +53,7 @@ const Template: ComponentStory<typeof Drawer> = (args) => {
           </div>
         }
       />
-    </div>
+    </>
   )
 }
 

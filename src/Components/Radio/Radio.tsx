@@ -1,5 +1,4 @@
-import { InputHTMLAttributes, ReactNode } from 'react'
-
+import { Fragment, InputHTMLAttributes, ReactNode, createElement } from 'react'
 import Button, { IButtonProps } from 'Components/Button/Button'
 import styles from './Radio.module.scss'
 import classJoin from 'Utils/classJoin'
@@ -8,7 +7,10 @@ export type dataType = {
   value: any
   label: string | ReactNode
   disabled?: boolean
+  icon?: string
+  startIcon?: string
 }
+
 export interface IRadioProps
   extends Omit<
     InputHTMLAttributes<Element>,
@@ -18,10 +20,11 @@ export interface IRadioProps
   name: string
   value: string | number
   data: dataType[]
-  variant?: 'default' | 'square' | 'button'
+  variant?: 'default' | 'square' | 'button' | 'circle'
   labelClassName?: string
   onChange: (val?, e?) => void
-  buttonProps?: (isChecked?: boolean) => IButtonProps | { className?: string }
+  buttonProps?: (isChecked?: boolean) => IButtonProps | undefined
+  labelTagName?: string
 }
 
 const Radio: any = (props: IRadioProps) => {
@@ -32,6 +35,7 @@ const Radio: any = (props: IRadioProps) => {
     variant,
     className,
     labelClassName,
+    labelTagName,
     buttonProps = () => {
       return { className: '' }
     },
@@ -39,10 +43,7 @@ const Radio: any = (props: IRadioProps) => {
   } = props
 
   return data.map((el, i) => {
-    const isChecked = value === el.value
-
-    const { className: buttonClassName, ...modifiedButtonProps } =
-      variant === 'button' ? buttonProps(isChecked) : { className: '' }
+    const isChecked = (value || value === 0) && value === el.value
 
     const id = `${otherProps.name}_${el.value}`
 
@@ -66,26 +67,33 @@ const Radio: any = (props: IRadioProps) => {
         variant={isChecked ? 'filled' : 'outlined'}
         color={isChecked ? 'primary' : 'gray'}
         size="sm"
-        className={classJoin([styles.radioButton, buttonClassName, className])}
         key={i}
         disabled={el.disabled}
         onClick={(e) => {
           !el.disabled && onChange(el.value, e)
         }}
-        {...modifiedButtonProps}
+        icon={el?.icon}
+        startIcon={el?.startIcon}
+        {...buttonProps(isChecked)}
+        className={classJoin([
+          styles.radioButton,
+          className,
+          buttonProps(isChecked).className,
+        ])}
       >
         {inputRadio}
-        {el.label}
+        {createElement(labelTagName || Fragment, {}, el.label)}
       </Button>
     ) : (
       <label
         key={i}
         className={classJoin([
           styles.radioContainer,
+          variant === 'circle' && styles.variantCircle,
           variant === 'square' && styles.variantRound,
           'user-select-none',
           el.disabled && styles.disabled,
-          className,
+          labelClassName,
         ])}
       >
         {inputRadio}
@@ -93,18 +101,19 @@ const Radio: any = (props: IRadioProps) => {
         <div
           className={classJoin([
             styles.tickBox,
+            variant === 'circle' && styles.variantCircle,
             variant === 'square' && styles.variantSquare,
           ])}
         >
           <span className={styles.tick} />
         </div>
 
-        <label htmlFor={id} className={classJoin(['mr-1', labelClassName])}>
-          {el.label}
-        </label>
+        {el.label}
       </label>
     )
   })
 }
 
 export default Radio
+
+Radio.defaultProps = { className: '', variant: 'default' }

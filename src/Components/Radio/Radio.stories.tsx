@@ -68,43 +68,6 @@ ButtonUnderline.args = {
     }
   },
 }
-export const LabelComp = Template.bind({})
-LabelComp.args = {
-  data: [
-    {
-      label: 'aaaa',
-      // icon: 'a',
-      value: 'aaaa',
-    },
-    {
-      label: 'bbbb',
-      // icon: 'b',
-      value: 'bbbb',
-    },
-  ].map((el) => {
-    // const isChecked = el.value === value
-    return {
-      ...el,
-      label: (
-        <div
-        // className={classJoin([isChecked && 'border-b-2 border-secondary'])}
-        >
-          {/* <Button className={classJoin([''])}> */}
-          {/* <Icon icon={el.icon} /> */}
-          {/* </Button> */}
-          {el.label}
-        </div>
-      ),
-    }
-  }),
-  variant: 'button',
-  defaultChecked: 'aaaa',
-  buttonProps: () => {
-    return {
-      className: classJoin(['ml-1']),
-    }
-  },
-}
 
 export const disabled = Template.bind({})
 disabled.args = {
@@ -162,7 +125,7 @@ vertical.args = {
     return {
       className: classJoin([
         'md:h-16 md:w-full md:mb-1 md:last-of-type:!mb-0 md:!rounded-l-none md:!border-l-0 ml-1 md:ml-0 shrink-0',
-        isChecked && 'md:!bg-gray-200 md:!border-gray-200 md:!text-black',
+        isChecked && 'md:!bg-gray-200 md:!border-gray-200 md:!text-dark-text',
       ]),
     }
   },

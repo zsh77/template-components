@@ -7,7 +7,7 @@
 }
 
 .tickBox {
-  @apply bg-white border-gray-350 ml-1 rounded-full relative border-[2.5px];
+  @apply bg-white border-gray-550 ml-1 rounded-full relative border-[2.5px] shrink-0;
   @apply h-6 w-6;
 }
 
@@ -27,7 +27,8 @@
   & > .tick {
     @apply block;
   }
-  &.variantSquare {
+  &.variantSquare,
+  &.variantCircle {
     @apply bg-white;
   }
 }
@@ -36,10 +37,17 @@
   &.tickBox {
     @apply rounded-sm;
   }
-  .tick {
+  & .tick {
     @apply border-primary;
   }
 }
+
+.variantCircle {
+  & .tick {
+    @apply border-none translate-x-1/2 -translate-y-1/2 rotate-0 rounded-full h-3 w-3 bg-primary;
+  }
+}
+
 /* radio square and round ends */
 
 /* disabled */

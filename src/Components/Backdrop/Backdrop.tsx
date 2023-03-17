@@ -1,8 +1,8 @@
-import { FC, HTMLAttributes } from 'react'
+import { FC } from 'react'
 import classJoin from 'Utils/classJoin'
 import styles from './Backdrop.module.scss'
 
-export interface IBackdropProps extends Omit<HTMLAttributes<Element>, 'id'> {
+export interface IBackdropProps {
   isOpen: boolean
   onClick: () => void
   variant?: 'transparent'

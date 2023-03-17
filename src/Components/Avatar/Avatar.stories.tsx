@@ -1,22 +1,24 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Avatar from '../Avatar/Avatar'
+import Avatar from './Avatar'
 
 export default {
   title: 'Avatar',
   component: Avatar,
 } as ComponentMeta<typeof Avatar>
 
-const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />
+const Template: ComponentStory<typeof Avatar> = (args) => (
+  <Avatar {...args} className="bg-secondary" />
+)
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const Default = Template.bind({})
+Default.args = {
   image: '',
 }
 
-export const Large = Template.bind({})
-Large.args = {
+export const Md = Template.bind({})
+Md.args = {
   image: '',
-  size: 'large',
+  size: 'md',
 }

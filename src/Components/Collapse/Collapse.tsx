@@ -1,16 +1,27 @@
-import Button from 'Components/Button/Button'
-import { FC, HTMLAttributes, useRef, useState } from 'react'
+import { FC, ReactNode, useRef, useState } from 'react'
+import Button, { IButtonProps } from 'Components/Button/Button'
 import classJoin from 'Utils/classJoin'
 
 import styles from './Collapse.module.scss'
 
-interface ICollapseProps extends HTMLAttributes<Element> {
+interface ICollapseProps {
   containerClassName: string
   backOnClose?: boolean
+  openedComp?: ReactNode
+  closedComp?: ReactNode
+  collapseButtonProps?: IButtonProps
+  children: ReactNode
 }
 
 const Collapse: FC<ICollapseProps> = (props) => {
-  const { children, containerClassName, backOnClose } = props
+  const {
+    children,
+    containerClassName,
+    backOnClose,
+    openedComp,
+    closedComp,
+    collapseButtonProps,
+  } = props
   const [isOpen, setIsOpen] = useState(false)
   const collapseElement = useRef<HTMLDivElement>()
 
@@ -18,7 +29,7 @@ const Collapse: FC<ICollapseProps> = (props) => {
     setIsOpen(!isOpen)
     if (backOnClose && isOpen) {
       setTimeout(() => {
-        collapseElement?.current?.scrollIntoView()
+        collapseElement?.current?.scrollIntoView({ behavior: 'smooth' })
       }, 100)
     }
   }
@@ -39,8 +50,23 @@ const Collapse: FC<ICollapseProps> = (props) => {
         className={classJoin(['w-full flex items-center justify-center'])}
         onClick={checkAndUncheckRadio}
       >
-        <Button variant="link" icon={isOpen ? '^' : 'v'} size="sm">
-          {isOpen ? <span>کمتر</span> : <span>بیشتر</span>}
+        <Button
+          variant="link"
+          {...collapseButtonProps}
+          icon={isOpen ? 'arrow_up_circle' : 'arrow_down_circle'}
+          aria-label={isOpen ? 'close' : 'open'}
+          iconClassName={classJoin([
+            'text-primary',
+            collapseButtonProps.iconClassName,
+          ])}
+          className={classJoin([
+            'flex flex-col',
+            collapseButtonProps.className,
+          ])}
+        >
+          {isOpen
+            ? openedComp || <span>see less</span>
+            : closedComp || <span>see_more</span>}
         </Button>
       </div>
     </div>
@@ -48,3 +74,5 @@ const Collapse: FC<ICollapseProps> = (props) => {
 }
 
 export default Collapse
+
+Collapse.defaultProps = { collapseButtonProps: {} }

@@ -1,4 +1,4 @@
-import { cloneElement, FC, ReactElement, useEffect, useState } from 'react'
+import { cloneElement, FC, useEffect, useState } from 'react'
 import TextField, { ITextFieldProps } from 'Components/TextField/TextField'
 import classJoin from 'Utils/classJoin'
 import styles from './Select.module.scss'
@@ -6,12 +6,14 @@ import Icon from 'Components/Icon/Icon'
 
 interface ISelectProps extends Omit<ITextFieldProps, 'onChange' | 'id'> {
   id: string
-  options?: { value: string; label: string }[]
+  options: { value: string; label: string }[]
   optionListClassName?: string
   textFieldClassName?: string
-  optionRender?: ReactElement
+  OptionRender?: FC<any>
   native?: boolean
+  noEmptyOption?: boolean
   onChange: (val: string) => void
+  optionProps?: any
 }
 
 const Select: FC<ISelectProps> = (props) => {
@@ -20,12 +22,15 @@ const Select: FC<ISelectProps> = (props) => {
     optionListClassName,
     textFieldClassName,
     options,
-    optionRender,
+    OptionRender,
     native,
     value,
     onChange,
+    noEmptyOption,
     id,
-    endIcon,
+    icon,
+    iconClassName,
+    optionProps,
     ...otherProps
   } = props
   const [showOptions, setShowOptions] = useState(false)
@@ -38,11 +43,11 @@ const Select: FC<ISelectProps> = (props) => {
     if (value !== fieldValue) setFieldValue(value)
   }, [value])
 
-  const itemSelection = (e) => {
+  const itemSelection = (e, directVal?) => {
     e.stopPropagation()
     const val = native
       ? e.target.value
-      : e?.target?.getAttribute('value') || value || ''
+      : e?.target?.getAttribute('value') || directVal || value || ''
     setFieldValue(val)
     onChange?.(val)
   }
@@ -64,21 +69,28 @@ const Select: FC<ISelectProps> = (props) => {
         ])}
         onChange={itemSelection}
         id={id}
-        endIcon={
+        {...otherProps}
+        icon={
           <label htmlFor={id}>
-            <Icon icon="v" />
+            {typeof icon === 'string' ? (
+              <Icon
+                icon={icon}
+                className={classJoin([styles.endIcon, iconClassName])}
+              />
+            ) : (
+              typeof icon !== 'undefined' && icon
+            )}
           </label>
         }
-        {...otherProps}
         {...(native
           ? {
               element: 'select',
               value: fieldValue,
               defaultValue: initialLabel,
               children: [
-                <option value="" key="null"></option>,
+                !noEmptyOption && <option value="" key="null" />,
                 ...options.map((el) => (
-                  <option value={el.value} key={el.value}>
+                  <option value={el.value} key={el.value} {...optionProps}>
                     {el.label}
                   </option>
                 )),
@@ -104,7 +116,11 @@ const Select: FC<ISelectProps> = (props) => {
         >
           {options.map((el, i) =>
             cloneElement(
-              optionRender || <div className={styles.optionRender} />,
+              OptionRender ? (
+                <OptionRender />
+              ) : (
+                <div className={styles.optionRender} />
+              ),
               {
                 key: i,
                 value: el.value,
@@ -121,4 +137,4 @@ const Select: FC<ISelectProps> = (props) => {
 
 export default Select
 
-Select.defaultProps = { endIcon: 'v' }
+Select.defaultProps = { icon: 'arrow_down', iconClassName: '', options: [] }

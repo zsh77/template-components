@@ -1,16 +1,19 @@
-import { FC, HTMLAttributes, ReactElement, useState } from 'react'
+import React, { FC, HTMLAttributes, ReactElement, useState } from 'react'
 
 import Backdrop from 'Components/Backdrop/Backdrop'
 import classJoin from 'Utils/classJoin'
 import styles from './Dropdown.module.scss'
 
-interface IDropdownProps extends HTMLAttributes<Element> {
+interface IDropdownProps {
+  className?: string
+  children: any
   dropdownClassName?: string
+  dropdownActiveClassName?: string
   triggerElement: ReactElement | string
   triggerElProps?: HTMLAttributes<Element>
   onOpen?: () => void
   onClose?: () => void
-  dir?: 'ltr' | 'rtl'
+  dir?: 'ltr' | 'rtl' | 'center'
   size?: 'sm' | 'md'
   fullPageInMobile?: boolean
 }
@@ -18,6 +21,7 @@ interface IDropdownProps extends HTMLAttributes<Element> {
 const Dropdown: FC<IDropdownProps> = (props) => {
   const {
     dropdownClassName,
+    dropdownActiveClassName,
     triggerElement,
     triggerElProps,
     onClose,
@@ -40,6 +44,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
 
   const closeMenu = () => {
     setOpen(false)
+    onClose?.()
   }
 
   return (
@@ -54,7 +59,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
           <div
             className={classJoin([
               styles.dropdown,
-              open ? styles.active : '',
+              ...(open && [styles.active, dropdownActiveClassName]),
               'customScrollbar',
               styles[dir],
               styles[size],
@@ -62,7 +67,7 @@ const Dropdown: FC<IDropdownProps> = (props) => {
               dropdownClassName,
             ])}
           >
-            {children}
+            {children({ closeMenu })}
           </div>
         </>
       )}

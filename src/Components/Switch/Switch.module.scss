@@ -1,5 +1,5 @@
 .switch {
-  @apply w-11 h-5 bg-gray-350 rounded-full;
+  @apply w-11 h-5 bg-gray-600 rounded-full;
   @apply after:content-[''] after:absolute after:top-[3px] after:right-[3px] after:bg-white after:rounded-full after:h-3.5 after:w-3.5 after:transition-all;
 }
 

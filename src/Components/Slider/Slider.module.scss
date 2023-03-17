@@ -1,0 +1,36 @@
+.sliderContainer {
+  @apply w-full relative py-4;
+  direction: ltr;
+}
+
+.slider {
+  @apply relative h-1;
+  z-index: 1;
+}
+.track {
+  @apply absolute inset-0 rounded-sm bg-primary;
+  z-index: 1;
+}
+
+.thumb {
+  @apply absolute rounded-full w-7 h-7 z-10 bg-white drop-shadow-lg flex items-center justify-center text-lg text-primary;
+  &.left {
+    transform: translate(-12px, -12px);
+    @apply -translate-x-3 -translate-y-3;
+  }
+  &.right {
+    @apply translate-x-3 -translate-y-3;
+  }
+}
+
+.rangeInput {
+  @apply absolute pointer-events-none w-full opacity-0 h-2;
+  z-index: 2;
+}
+.rangeInput::-webkit-slider-thumb {
+  @apply w-5 h-5;
+  pointer-events: all;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

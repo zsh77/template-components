@@ -38,7 +38,7 @@ export const Card = Template.bind({})
 Card.args = {
   id: 'uniq_id',
   variant: 'custom',
-  itemWrapperClassName: 'border !border-gray-400 rounded-md p-2',
+  itemWrapperClassName: () => 'border !border-gray-400 rounded-md p-2',
   data: [
     ...[
       {
@@ -49,14 +49,14 @@ Card.args = {
             سفارش مجدد
           </Button>
         ),
-        iconButton: <Button icon="#" variant="link" color="gray" />,
+        iconButton: <Button icon="delete" variant="link" color="gray" />,
       },
     ].map((el, i) => {
       return {
         titleComp: (toggle, isSelected) => (
           <>
             <div className="flex justify-between items-center">
-              <div>{i + 1}</div>
+              <div className="pr-2">{i + 1}</div>
               <div>{el.orderNum}</div>
               <div>{el.date}</div>
               <Button onClick={toggle} variant="link">
@@ -86,7 +86,7 @@ Card.args = {
 export const FilterCard = Template.bind({})
 FilterCard.args = {
   id: 'uniq_id',
-  itemWrapperClassName: 'border !border-gray-400 rounded-md mb-2',
+  itemWrapperClassName: () => 'border !border-gray-400 rounded-md mb-2',
   titleClassName: 'bg-gray-300 p-2 py-2',
   bodyClassName: 'pb-0',
   data: [

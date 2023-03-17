@@ -14,15 +14,17 @@ const Template: ComponentStory<typeof Chips> = (args) => (
 )
 
 export const Default = Template.bind({})
-Default.args = { label: 'چیپس' }
+Default.args = { label: 'chips' }
 
 export const Color = Template.bind({})
-Color.args = { label: 'چیپس', color: 'gray' }
+Color.args = { label: 'chips', color: 'gray' }
 
 export const Removable = Template.bind({})
 Removable.args = {
-  label: 'چیپس',
+  label: 'chips',
   color: 'gray',
   canRemove: true,
+  className: 'px-2 !py-1 flex items-center',
+  iconClassName: 'text-gray-550',
   onRemove: () => {},
 }

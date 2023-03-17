@@ -1,28 +1,34 @@
-import { AriaAttributes, ButtonHTMLAttributes, createElement, FC } from 'react'
-
+import { createElement, forwardRef, ReactNode, MouseEventHandler } from 'react'
 import Icon from 'Components/Icon/Icon'
-import classJoin from 'Utils/classJoin'
-
-import styles from './Button.module.scss'
 import Spinner from 'Components/Spinner/Spinner'
+import classJoin from 'Utils/classJoin'
+import styles from './Button.module.scss'
 
 type ButtonVariantsType = 'filled' | 'outlined' | 'link'
-type ButtonColorsType = 'primary' | 'secondary' | 'gray' | 'white' | 'black'
+type ButtonColorsType =
+  | 'primary'
+  | 'secondary'
+  | 'gray'
+  | 'white'
+  | 'black'
+  | 'customColor'
 type ButtonSizesType =
   | 'lg' //50px
   | 'md' //40px
   | 'sm' //30px
 
-export interface IButtonProps
-  extends AriaAttributes,
-    ButtonHTMLAttributes<Element> {
+export interface IButtonProps {
   variant?: ButtonVariantsType
   color?: ButtonColorsType
   className?: string
+  children?: ReactNode
+  onClick?: MouseEventHandler | undefined
+  iconClassName?: string
   fullWidth?: boolean
   disabled?: boolean
   size?: ButtonSizesType
   startIcon?: string
+  startIconClassName?: string
   icon?: string
   iconColor?: string
   iconSize?: string
@@ -30,15 +36,20 @@ export interface IButtonProps
   target?: string
   element?: 'a' | 'button' | 'div'
   isLoading?: boolean
+  noHover?: boolean
+  'aria-label'?: string
+  rel?: string
 }
 
-const Button: FC<IButtonProps> = (props) => {
+const Button = forwardRef((props: IButtonProps, ref) => {
   const {
     variant,
     color,
     className,
+    iconClassName,
     children,
     startIcon,
+    startIconClassName,
     size,
     fullWidth,
     disabled,
@@ -47,6 +58,7 @@ const Button: FC<IButtonProps> = (props) => {
     iconSize,
     element,
     isLoading,
+    noHover,
     ...otherProps
   } = props
 
@@ -56,21 +68,22 @@ const Button: FC<IButtonProps> = (props) => {
     element || (otherProps.href ? 'a' : 'button'),
     {
       className: classJoin([
-        otherProps.href ? 'select-none' : '',
         styles.ButtonRoot,
         styles[color],
         styles[variant],
         styles[`btn-size-${size}`],
-        fullWidth ? ' w-full' : '',
-        disabled ? styles.disabled : '',
-        isIconButton ? '!p-0' : '',
+        fullWidth && ' w-full',
+        (otherProps.href || element === 'a') && styles.aTag,
+        disabled && styles.disabled,
+        isIconButton && '!p-0',
         startIcon || icon
           ? isIconButton
             ? styles.iconButton
-            : styles.containsIcon
+            : styles.containIcon
           : '',
         isLoading && 'relative',
-        className || '',
+        noHover && styles.noHover,
+        className,
       ]),
       ...otherProps,
       disabled,
@@ -80,7 +93,10 @@ const Button: FC<IButtonProps> = (props) => {
         <Icon
           icon={startIcon}
           size={iconSize}
-          className="ml-2"
+          className={classJoin([
+            isIconButton ? 'ml-0' : 'ml-2',
+            startIconClassName,
+          ])}
           {...(iconColor ? { color: iconColor } : {})}
         />
       )}
@@ -90,10 +106,7 @@ const Button: FC<IButtonProps> = (props) => {
       {icon && (
         <Icon
           icon={icon}
-          className={classJoin([
-            'align-middle',
-            isIconButton ? 'mr-0' : 'mr-1',
-          ])}
+          className={classJoin([isIconButton ? 'mr-0' : 'mr-1', iconClassName])}
           size={iconSize}
           {...(iconColor ? { color: iconColor } : {})}
         />
@@ -105,8 +118,9 @@ const Button: FC<IButtonProps> = (props) => {
       )}
     </>
   )
-}
+})
 
 export default Button
 
+Button.displayName = 'Button'
 Button.defaultProps = { variant: 'filled', color: 'primary', size: 'md' }

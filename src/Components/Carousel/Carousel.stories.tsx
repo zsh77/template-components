@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Carousel> = (args) => (
       data={['1', '2', '3', '4', '5', '6', '7', '8', '9']}
       margin={8}
       components={(data) => (
-        <div className="w-[200px] h-[150px] md:w-[300px] bg-red-400 ml-2">
+        <div className="w-[200px] h-[150px] md:w-[300px] bg-secondary ml-2">
           {data}
         </div>
       )}

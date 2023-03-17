@@ -1,5 +1,5 @@
 .ButtonRoot {
-  @apply relative px-4 cursor-pointer rounded-lg overflow-hidden block whitespace-nowrap focus:outline-none;
+  @apply relative select-none px-4 cursor-pointer rounded-lg overflow-hidden block whitespace-nowrap focus:outline-none;
 }
 
 // variants
@@ -7,15 +7,25 @@
   @apply border;
   &.primary {
     @apply text-primary-reverse bg-primary border-primary;
+    &:not(.noHover) {
+      @apply hover:bg-primary/80 hover:border-primary/80 transition-colors;
+    }
+
+    & > i {
+      @apply text-primary-reverse;
+    }
   }
   &.secondary {
-    @apply text-black bg-secondary border-secondary;
+    @apply text-white bg-secondary border-secondary;
   }
   &.gray {
-    @apply text-black bg-gray-350 border-gray-350;
+    @apply text-black bg-gray-100 border-gray-100;
   }
   &.white {
-    @apply text-black bg-white border-white;
+    @apply text-dark-text bg-white border-white;
+  }
+  &.customColor {
+    @apply bg-none border-none;
   }
 
   &.disabled {
@@ -27,15 +37,18 @@
   @apply border;
   &.primary {
     @apply text-primary border-primary;
+    &:not(.noHover) {
+      @apply hover:bg-primary hover:text-primary-reverse  transition-colors;
+    }
   }
   &.secondary {
     @apply text-secondary border-secondary;
   }
   &.gray {
-    @apply text-gray-350 border-gray-350;
+    @apply text-gray-700 border-gray-400;
   }
   &.white {
-    @apply text-white border-white;
+    @apply text-white border-white hover:bg-gray-100;
   }
 
   &.disabled {
@@ -52,13 +65,13 @@
     @apply text-secondary;
   }
   &.gray {
-    @apply text-gray-350;
+    @apply text-gray-800;
   }
   &.white {
     @apply text-white;
   }
   &.black {
-    @apply text-black;
+    @apply text-dark-text;
   }
 
   &.disabled {
@@ -71,11 +84,14 @@
   @apply cursor-not-allowed;
 }
 
-// icon button or with icon
-.containsIcon {
+// contains an icon
+.containIcon {
   @apply flex items-center;
 }
+
+// icon button: button only with icon
 .iconButton {
+  @apply flex items-center justify-center;
   &.btn-size-sm {
     @apply min-h-[30px] min-w-[30px] text-sm;
   }
@@ -105,4 +121,9 @@
 // loading
 .loaderBg {
   @apply absolute top-0 right-0 bg-gray-300/70 w-full h-full flex items-center justify-center cursor-wait;
+}
+
+// anchor tag
+.aTag {
+  @apply flex items-center w-fit;
 }

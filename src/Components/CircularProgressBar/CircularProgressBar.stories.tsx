@@ -23,7 +23,7 @@ const CustomTemplate: ComponentStory<typeof CircularProgressBar> = (args) => {
   // const size = 2 * args.radius + 4 * args.strokeWidth //60px
 
   return (
-    <div className="bg-rose-300 p-3 flex items-center justify-center">
+    <div className="bg-secondary-300 p-3 flex items-center justify-center">
       <div
         className={classJoin([
           'relative p-1 rounded-full bg-white ml-2',

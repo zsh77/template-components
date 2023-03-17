@@ -20,36 +20,40 @@ const TabButtonsExample = () => {
   const a = [
     {
       label: 'aaaa',
-      icon: 'a',
+      icon: 'grass',
       value: 'aaaa',
     },
     {
       label: 'bbbb',
-      icon: 'b',
+      icon: 'flower',
       value: 'bbbb',
     },
     {
       label: 'cccc',
-      icon: 'c',
+      icon: 'gift',
       value: 'cccc',
     },
     {
       label: 'dddd',
-      icon: 'd',
+      icon: 'gift_card',
       value: 'dddd',
     },
   ].map((el) => {
+    const { icon, ...restOfEl } = el
     const isChecked = el.value === value
     return {
-      ...el,
+      ...restOfEl,
       label: (
         <>
           <Button
             color={isChecked ? 'primary' : 'gray'}
             className={classJoin(['md:!bg-transparent md:!border-none'])}
-          >
-            <Icon icon={el.icon} />
-          </Button>
+            icon={icon}
+            iconClassName="text-xl"
+            iconColor={
+              isChecked ? 'text-white md:!text-primary' : 'text-primary'
+            }
+          />
           {el.label}
         </>
       ),
@@ -63,7 +67,7 @@ const TabButtonsExample = () => {
       onChange={(value, e) => {
         setValue(value)
       }}
-      tabPanelClassName="bg-gray-200 rounded-l-md p-3"
+      tabPanelClassName="bg-gray-100 rounded-l-md p-3"
       variant="button"
       buttonProps={(isChecked) => {
         return {

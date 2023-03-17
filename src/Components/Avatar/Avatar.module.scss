@@ -1,4 +1,12 @@
 .avatar {
   @apply rounded-full;
+}
+.sm {
   @apply w-16 h-16;
+}
+.md {
+  @apply w-20 h-20;
+}
+.lg {
+  @apply w-24 h-24;
 }

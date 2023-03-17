@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof TextField> = (args) => {
           setVal(value)
         }}
       />
-      <div>{val || ' '}</div>
+      <div>{val}</div>
     </div>
   )
 }
@@ -38,4 +38,8 @@ export const Error = Template.bind({})
 Error.args = { label: 'لیبل', variant: 'filled', error: 'ایمیل صحیح نیست.' }
 
 export const EndIcon = Template.bind({})
-EndIcon.args = { label: 'لیبل', variant: 'filled', endIcon: 'icon' }
+EndIcon.args = {
+  label: 'لیبل',
+  variant: 'filled',
+  icon: 'arrow_down',
+}

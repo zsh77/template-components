@@ -1,0 +1,19 @@
+.carouselParent {
+  @apply overflow-hidden;
+}
+.carousel {
+  @apply flex;
+  transition: transform 0.4s;
+}
+.carouselArrow {
+  @apply flex absolute top-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white z-10 shadow-md;
+  &.back {
+    @apply right-0;
+  }
+  &.forward {
+    @apply left-0;
+  }
+  & > i {
+    @apply text-xl;
+  }
+}

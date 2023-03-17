@@ -21,10 +21,10 @@ const Spinner: FC<ISpinnerProps> = (props) => {
       >
         <circle
           className={classJoin([color])}
-          stroke-width={strokeWidth}
+          strokeWidth={strokeWidth}
           fill="transparent"
-          stroke-dashoffset={`${(2 * circumference) / 5}`}
-          stroke-dasharray={`${circumference} ${circumference}`}
+          strokeDashoffset={`${(2 * circumference) / 5}`}
+          strokeDasharray={`${circumference} ${circumference}`}
           r={radius}
           cx={radius + strokeWidth}
           cy={radius + strokeWidth}

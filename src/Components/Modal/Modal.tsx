@@ -1,14 +1,16 @@
-import React, { HTMLAttributes, useEffect } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import styles from './Modal.module.scss'
 import Button, { IButtonProps } from '../Button/Button'
-
 import classJoin from 'Utils/classJoin'
+import Backdrop from 'Components/Backdrop/Backdrop'
+import scrollLock from 'Utils/scrollLock'
 
 export type SizeType = 'md' | 'sm' | 'lg'
 
-export interface IModalProps extends HTMLAttributes<Element> {
+export interface IModalProps {
   onClose: () => void
   isOpen: boolean
+  children: ReactNode | ReactNode[]
   buttons?: IButtonProps[]
   hasClose?: boolean
   size?: SizeType
@@ -16,6 +18,8 @@ export interface IModalProps extends HTMLAttributes<Element> {
   className?: string
   bodyClassName?: string
   buttonsClassName?: string
+  header?: ReactNode
+  headerClassName?: string
 }
 
 function Modal(props: IModalProps): JSX.Element {
@@ -29,40 +33,52 @@ function Modal(props: IModalProps): JSX.Element {
     className,
     bodyClassName,
     buttonsClassName,
+    header,
+    headerClassName,
   } = props
 
   useEffect(() => {
-    isOpen
-      ? typeof document !== 'undefined' &&
-        (document.body.style.overflow = 'hidden')
-      : typeof document !== 'undefined' &&
-        (document.body.style.overflow = 'auto')
+    scrollLock(isOpen)
   }, [isOpen])
 
   return isOpen ? (
-    <div
-      className={classJoin([styles.wholeWindow, !isOpen ? styles.off : ''])}
-      onClick={onClose}
-    >
+    <>
+      <Backdrop isOpen={isOpen} onClick={onClose} />
+
       <div
         className={classJoin([
           styles.modal,
-          size ? styles[size] : '',
-          className || '',
+          size && styles[size],
+          isOpen && styles.open,
+          'absolute-center',
+          className,
         ])}
-        onClick={(e) => e.stopPropagation()}
       >
         {/* close button of modal */}
         {hasClose ? (
           <div className={styles.header}>
             <Button
-              icon="close"
+              icon="x"
+              aria-label="close-modal"
+              color="gray"
               onClick={onClose}
-              className={styles.closeIcon}
+              className="mr-auto !min-w-0"
               variant="link"
               element="button"
               size="sm"
             />
+          </div>
+        ) : null}
+
+        {/* sticky header for modal */}
+        {header ? (
+          <div
+            className={classJoin([
+              'p-3 pb-0 md:p-5 md:py-3 rounded-t-lg',
+              headerClassName,
+            ])}
+          >
+            {header}
           </div>
         ) : null}
 
@@ -87,7 +103,7 @@ function Modal(props: IModalProps): JSX.Element {
           </div>
         )}
       </div>
-    </div>
+    </>
   ) : (
     <></>
   )
@@ -96,4 +112,5 @@ export default Modal
 Modal.defaultProps = {
   children: '',
   size: 'md',
+  buttons: [],
 }

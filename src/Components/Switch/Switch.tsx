@@ -1,31 +1,38 @@
-import React, { FC, InputHTMLAttributes, ReactNode } from 'react'
+import React, { ChangeEvent, FC, InputHTMLAttributes, ReactNode } from 'react'
 import classJoin from 'Utils/classJoin'
 import styles from './Switch.module.scss'
 
 interface ISwitchProps extends Omit<InputHTMLAttributes<Element>, 'label'> {
-  label: string | ReactNode
-  // checked: boolean
-  // onChange: () => void
+  label?: string | ReactNode
+  id: string
+  checked?: boolean
+  onChange: (e?: ChangeEvent<HTMLInputElement>) => void
+  labelClassName?: string
 }
 
 const Switch: FC<ISwitchProps> = (props) => {
-  const { id, label, ...otherProps } = props
+  const { id, label, labelClassName, className, ...otherProps } = props
   return (
-    <div>
-      <label
-        htmlFor={id}
-        className="inline-flex flex-row relative items-center cursor-pointer"
-      >
-        <input
-          type="checkbox"
-          className={classJoin(['sr-only peer', styles.checkbox])}
-          id={id}
-          {...otherProps}
-        />
-        <div className={styles.switch} />
-        <span className={styles.label}>{label}</span>
-      </label>
-    </div>
+    <label
+      htmlFor={id}
+      className={classJoin([
+        'inline-flex flex-row relative items-center cursor-pointer',
+        className,
+      ])}
+    >
+      <input
+        type="checkbox"
+        className={classJoin(['sr-only', styles.checkbox])}
+        id={id}
+        {...otherProps}
+      />
+      <div className={styles.switch} />
+      {label && (
+        <span className={classJoin([styles.label, labelClassName])}>
+          {label}
+        </span>
+      )}
+    </label>
   )
 }
 

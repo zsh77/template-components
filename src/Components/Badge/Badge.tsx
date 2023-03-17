@@ -1,20 +1,31 @@
-import { FC, HTMLAttributes, ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import classJoin from 'Utils/classJoin'
 
 import styles from './Badge.module.scss'
 
-interface IBadgeProps extends HTMLAttributes<Element> {
+interface IBadgeProps {
   children?: ReactElement
-  content?: string
+  content?: string | number
   color?: string
+  className?: string
+  wrapperClassName?: string
+  size?: 'default' | 'lg'
 }
 
 const Badge: FC<IBadgeProps> = (props) => {
-  const { content, color, children } = props
+  const { content, color, children, size, className, wrapperClassName } = props
 
   return (
-    <div className={styles.wrapper}>
-      <div className={classJoin([styles.badge, color])}>{content}</div>
+    <div className={classJoin([styles.wrapper, wrapperClassName])}>
+      <div
+        className={classJoin([
+          size === 'lg' ? styles.lgBadge : styles.badge,
+          color,
+          className,
+        ])}
+      >
+        {content}
+      </div>
       {children}
     </div>
   )
@@ -22,4 +33,8 @@ const Badge: FC<IBadgeProps> = (props) => {
 
 export default Badge
 
-Badge.defaultProps = { content: ' ', color: 'bg-red-badge text-white' }
+Badge.defaultProps = {
+  content: ' ',
+  color: 'bg-red-badge text-white',
+  size: 'default',
+}

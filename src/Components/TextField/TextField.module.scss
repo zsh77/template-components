@@ -2,19 +2,21 @@
   @apply bg-gray-200;
 }
 .filled-label {
-  @apply bg-gray-200 rounded-md;
+  @apply bg-gray-200 text-gray-700;
 }
 
 .outlined-input {
-  @apply bg-white focus:border-blue-600;
+  @apply bg-white focus:border-primary;
+  &:autofill {
+    background-color: white !important;
+  }
 }
 .outlined-label {
-  @apply bg-white;
+  @apply bg-white text-gray-700;
 }
 
 .input {
-  @apply block rounded-lg px-2.5 pb-2.5 pt-4 w-full text-sm appearance-none focus:outline-none border border-gray-300 focus:ring-0;
-
+  @apply block rounded-lg px-2.5 pb-2.5 pt-2.5 w-full text-sm appearance-none focus:outline-none border border-gray-400 focus:ring-0;
   &.filled-input {
     @apply border-gray-200;
   }
@@ -25,12 +27,12 @@
     @apply scale-100 -translate-y-1/2 top-1/2;
   }
   &:focus + .label {
-    @apply -translate-y-4 text-blue-600 px-2 top-2 scale-75;
+    @apply -translate-y-4 text-primary px-2 top-2 scale-75;
   }
   &.error {
-    @apply border-red-500;
+    @apply border-red-error;
     & + .label {
-      @apply text-red-500;
+      @apply text-red-error;
     }
   }
   &.withEndIcon {
@@ -38,7 +40,7 @@
   }
 }
 .label {
-  @apply absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] right-1 px-2;
+  @apply absolute text-sm rounded-md duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[90%] right-1 px-2;
 }
 
 .endIcon {
@@ -46,9 +48,21 @@
 }
 
 .errorText {
-  @apply mr-1 mt-1 min-h-[20px] text-xs text-red-500;
+  @apply mr-1 mt-1 min-h-[20px] text-xs text-red-error text-right;
 }
 
 .disabled {
   @apply cursor-not-allowed;
+  &.filled-input {
+    @apply bg-gray-400;
+  }
+  &.filled-label {
+    @apply bg-gray-400;
+  }
+  &.outlined-input {
+    @apply bg-gray-200;
+  }
+  &.outlined-label {
+    @apply bg-gray-200;
+  }
 }

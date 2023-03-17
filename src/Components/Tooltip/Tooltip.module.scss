@@ -7,8 +7,8 @@
 }
 
 .tooltip {
-  @apply absolute hidden w-48 px-2 py-1 bg-gray-700 rounded-lg text-center text-white max-w-screen-sm hover:flex;
-  @apply before:content-[''] before:absolute before:border-gray-700 before:border-8;
+  @apply absolute hidden w-48 px-2 py-1 bg-gray-900 rounded-lg text-center text-white max-w-screen-sm hover:flex z-40;
+  @apply before:content-[''] before:absolute before:border-gray-900 before:border-8;
 }
 .top {
   @apply -top-2 -left-1 -translate-y-full;
@@ -17,6 +17,9 @@
 .bottom {
   @apply -left-1 top-[100%] translate-y-2;
   @apply before:-top-4  before:left-3  before:border-x-transparent before:border-t-transparent;
+  &.rtl {
+    @apply -right-1 before:left-auto before:right-3;
+  }
 }
 .right {
   @apply -top-1 -right-3 translate-x-full;

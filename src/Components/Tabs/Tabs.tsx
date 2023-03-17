@@ -8,7 +8,9 @@ export interface ITabsProps extends Omit<IRadioProps, 'data'> {
   tabPanelClassName?: string
   tabList?: {
     value: any
-    label: string | ReactNode | any
+    label: string | any
+    icon?: string
+    startIcon?: string
     disabled?: boolean
   }[]
   tabPanelComp?: string | ReactNode
@@ -30,6 +32,7 @@ const Tabs: FC<ITabsProps> = (props) => {
     buttonProps,
     hasUnderline,
     underlineClassName,
+    labelTagName,
   } = props
 
   return (
@@ -46,6 +49,7 @@ const Tabs: FC<ITabsProps> = (props) => {
           value,
           onChange,
           variant,
+          labelTagName,
           buttonProps: (isChecked) => {
             return {
               ...buttonProps(isChecked),
@@ -65,7 +69,7 @@ const Tabs: FC<ITabsProps> = (props) => {
           ])}
         />
       )}
-      <div className={classJoin([tabPanelClassName])}>{tabPanelComp}</div>
+      <div className={classJoin([tabPanelClassName || ''])}>{tabPanelComp}</div>
     </div>
   )
 }

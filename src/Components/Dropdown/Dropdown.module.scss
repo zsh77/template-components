@@ -15,6 +15,9 @@
 .ltr {
   @apply left-0;
 }
+.center {
+  @apply right-1/2 translate-x-1/2;
+}
 
 // sizes
 .sm {

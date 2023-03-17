@@ -10,7 +10,7 @@
 
 /* Create a custom checkbox */
 .tickBox {
-  @apply bg-white  border-gray-350 ml-1 rounded-sm relative border-[2.5px];
+  @apply bg-white shrink-0 border-gray-550 ml-1 rounded-sm relative border-[2.5px];
   @apply h-6 w-6;
 }
 
@@ -24,7 +24,7 @@
 
 /* On mouse-over */
 .checkboxContainer:hover .tickBox {
-  @apply bg-gray-300;
+  @apply bg-gray-200;
 }
 
 /* When the checkbox is checked */

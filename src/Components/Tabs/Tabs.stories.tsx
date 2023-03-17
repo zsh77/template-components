@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Tabs from './Tabs'
 import useState from 'storybook-addon-state'
 import classJoin from 'Utils/classJoin'
-import TabButtonsExample from './TabButtons'
+import TabButtonsExample from './TabButtons.stories'
 
 export default {
   title: 'Tabs',
@@ -110,7 +110,7 @@ Vertical.args = {
     return {
       className: classJoin([
         'md:h-16 md:w-full mb-1 md:last-of-type:!mb-0 md:!rounded-l-none md:!border-l-0 ml-1 md:ml-0',
-        isChecked && 'md:!bg-gray-200 md:!border-gray-200 md:!text-black',
+        isChecked && 'md:!bg-gray-200 md:!border-gray-200 md:!text-dark-text',
       ]),
     }
   },

@@ -1,15 +1,16 @@
-import { FC, HTMLAttributes } from 'react'
-
+import { FC } from 'react'
 import classJoin from 'Utils/classJoin'
 import styles from './Tooltip.module.scss'
 
-interface ITooltipProps extends HTMLAttributes<Element> {
+interface ITooltipProps {
   children
   content
   position?: 'top' | 'bottom' | 'right' | 'left'
   size?: 'md' | 'sm'
   childrenClassName?: string
   wrapperClassName?: string
+  contentClassName?: string
+  dir?: 'rtl' | 'ltr' | 'center'
 }
 
 const Tooltip: FC<ITooltipProps> = (props) => {
@@ -19,6 +20,8 @@ const Tooltip: FC<ITooltipProps> = (props) => {
     children,
     childrenClassName,
     wrapperClassName,
+    contentClassName,
+    dir,
   } = props
 
   return (
@@ -27,7 +30,14 @@ const Tooltip: FC<ITooltipProps> = (props) => {
         {children}
       </div>
 
-      <div className={classJoin([styles.tooltip, styles[position]])}>
+      <div
+        className={classJoin([
+          styles.tooltip,
+          styles[position],
+          styles[dir],
+          contentClassName,
+        ])}
+      >
         {content}
       </div>
     </div>
@@ -35,3 +45,4 @@ const Tooltip: FC<ITooltipProps> = (props) => {
 }
 
 export default Tooltip
+Tooltip.defaultProps = { position: 'top', dir: 'ltr' }

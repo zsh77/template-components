@@ -8,7 +8,11 @@ export default {
   component: Button,
 } as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
+const Template: ComponentStory<typeof Button> = (args) => (
+  <div className="max-w-full min-h-[50vh] min-w-[350px] flex items-center justify-center">
+    <Button {...args} />
+  </div>
+)
 
 export const Primary = Template.bind({})
 Primary.args = {
@@ -63,7 +67,7 @@ Icon.args = {
 export const WithIcon = Template.bind({})
 WithIcon.args = {
   children: 'Button',
-  icon: 'x',
+  icon: 'plant_pot',
 }
 
 export const Disabled = Template.bind({})

@@ -84,22 +84,35 @@ Lg.args = {
   },
 }
 
-export const icon = Template.bind({})
-icon.args = {
+export const iconV1 = Template.bind({})
+iconV1.args = {
   data: [
-    { label: <Icon icon="x" />, value: 'aaaa' },
-    { label: <Icon icon=">" />, value: 'bbbb' },
-    { label: <Icon icon="<" />, value: 'cccc' },
-    { label: <Icon icon="^" />, value: 'dddd' },
+    { icon: 'heart', value: 'aaaa' },
+    { icon: 'flower', value: 'bbbb' },
+    { icon: 'gift', value: 'cccc' },
+    { icon: 'gift_card', value: 'dddd' },
+  ],
+  buttonProps: () => {
+    return { iconClassName: 'text-lg !mr-0' }
+  },
+}
+
+export const iconV2 = Template.bind({})
+iconV2.args = {
+  data: [
+    { label: <Icon icon="heart" className="text-lg" />, value: 'aaaa' },
+    { label: <Icon icon="flower" className="text-lg" />, value: 'bbbb' },
+    { label: <Icon icon="gift" className="text-lg" />, value: 'cccc' },
+    { label: <Icon icon="gift_card" className="text-lg" />, value: 'dddd' },
   ],
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
   data: [
-    { label: <Icon icon="x" />, value: 'aaaa', disabled: true },
-    { label: <Icon icon=">" />, value: 'bbbb' },
-    { label: <Icon icon="<" />, value: 'cccc' },
-    { label: <Icon icon="^" />, value: 'dddd' },
+    { label: 'aaaa', value: 'aaaa', disabled: true },
+    { label: 'bbbb', value: 'bbbb' },
+    { label: 'cccc', value: 'cccc' },
+    { label: 'dddd', value: 'dddd' },
   ],
 }

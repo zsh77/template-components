@@ -1,9 +1,10 @@
-import { FC, HTMLAttributes, ReactNode } from 'react'
+import { FC, ReactNode, useEffect } from 'react'
 import Backdrop from 'Components/Backdrop/Backdrop'
 import classJoin from 'Utils/classJoin'
+import scrollLock from 'Utils/scrollLock'
 
-interface IDrawerProps extends Omit<HTMLAttributes<Element>, 'className'> {
-  onClose?: () => void
+interface IDrawerProps {
+  onClose: () => void
   isOpen: boolean
   placement?: 'right' | 'left' | 'bottom'
   children: ReactNode
@@ -21,6 +22,10 @@ const Drawer: FC<IDrawerProps> = (props) => {
     className,
     ...otherProps
   } = props
+
+  useEffect(() => {
+    scrollLock(isOpen)
+  }, [isOpen])
 
   const getPlacement = () => {
     switch (placement) {
@@ -57,7 +62,7 @@ const Drawer: FC<IDrawerProps> = (props) => {
       />
       <div
         className={classJoin([
-          'fixed w-3/4 h-screen z-20 bg-white p-5 flex flex-col duration-300 transform overflow-y-auto',
+          'fixed w-3/4 h-full z-30 bg-white p-5 flex flex-col duration-300 transform overflow-y-auto',
           ...getPlacement().base,
           ...getPlacement()[isOpen ? 'active' : 'inactive'],
           className(isOpen),

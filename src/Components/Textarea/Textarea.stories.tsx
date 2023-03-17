@@ -21,10 +21,25 @@ export const Filled = Template.bind({})
 Filled.args = { label: 'لیبل', variant: 'filled', id: 'adasd' }
 
 export const Disabled = Template.bind({})
-Disabled.args = { label: 'لیبل', variant: 'filled', disabled: true }
+Disabled.args = {
+  label: 'لیبل',
+  variant: 'filled',
+  id: 'adasd',
+  disabled: true,
+}
 
 export const Error = Template.bind({})
-Error.args = { label: 'لیبل', variant: 'filled', error: 'ایمیل صحیح نیست.' }
+Error.args = {
+  label: 'لیبل',
+  variant: 'filled',
+  id: 'adasd',
+  error: 'ایمیل صحیح نیست.',
+}
 
 export const EndIcon = Template.bind({})
-EndIcon.args = { label: 'لیبل', variant: 'filled', endIcon: 'icon' }
+EndIcon.args = {
+  label: 'لیبل',
+  variant: 'filled',
+  id: 'adasd',
+  icon: 'arrow_down',
+}

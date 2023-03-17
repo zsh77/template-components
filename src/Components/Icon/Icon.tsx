@@ -8,19 +8,22 @@ interface IIconProps {
   color?: string
   onClick?: () => void
   onFocus?: () => void
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
+  'aria-label'?: string
+  role?: string
 }
 
 const Icon: FC<IIconProps> = (props) => {
   const { icon, className, size, color, ...otherProps } = props
 
   return (
-    <div
-      role="icon"
-      className={classJoin([size, color, className])}
-      {...otherProps}
-    >
-      {icon}
-    </div>
+    icon && (
+      <i
+        className={classJoin(['gsfont-' + icon, size, color, className])}
+        {...otherProps}
+      />
+    )
   )
 }
 
@@ -29,5 +32,5 @@ export default Icon
 Icon.defaultProps = {
   className: '',
   size: '',
-  color: 'text-black',
+  color: 'text-dark-text',
 }

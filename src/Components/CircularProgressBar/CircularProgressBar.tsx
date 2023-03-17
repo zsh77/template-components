@@ -1,8 +1,8 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { FC } from 'react'
 import classJoin from 'Utils/classJoin'
 import styles from './CircularProgressBar.module.scss'
 
-export interface ICircularProgressBarProps extends HTMLAttributes<Element> {
+export interface ICircularProgressBarProps {
   radius: number
   className?: string
   color?: string
@@ -23,12 +23,12 @@ const CircularProgressBar: FC<ICircularProgressBarProps> = (props) => {
     >
       <circle
         className={classJoin([styles.circle, color])}
-        stroke-width={strokeWidth}
+        strokeWidth={strokeWidth}
         fill="transparent"
-        stroke-dashoffset={`${
+        strokeDashoffset={`${
           circumference - ((percent || 0) / 100) * circumference
         }`}
-        stroke-dasharray={`${circumference} ${circumference}`}
+        strokeDasharray={`${circumference} ${circumference}`}
         r={radius}
         cx={radius + strokeWidth}
         cy={radius + strokeWidth}

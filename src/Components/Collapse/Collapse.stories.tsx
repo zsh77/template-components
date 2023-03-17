@@ -30,4 +30,8 @@ Default.args = {
       موجود طراحی اساسا مورد استفاده قرار گیرد.
     </div>
   ),
+  collapseButtonProps: {
+    iconClassName: 'text-2xl',
+    className: 'pt-3',
+  },
 }

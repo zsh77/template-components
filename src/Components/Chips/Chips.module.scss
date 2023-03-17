@@ -1,9 +1,9 @@
 .chips {
-  @apply whitespace-nowrap flex items-center justify-center px-2 pb-0.5 ml-1 my-1 rounded-md leading-5;
+  @apply whitespace-nowrap flex items-center justify-center px-2 pb-0.5 ml-1 my-1 rounded-md leading-5 border-2;
 }
 .secondary {
-  @apply text-secondary border-secondary border-2;
+  @apply text-secondary border-secondary;
 }
 .gray {
-  @apply text-gray-500 border-gray-500 border-2;
+  @apply text-black border-gray-500;
 }

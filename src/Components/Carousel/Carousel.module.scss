@@ -1,16 +1,31 @@
 .carouselParent {
-  @apply overflow-y-hidden overflow-x-auto md:overflow-x-hidden;
+  @apply overflow-hidden;
+
+  &:not(.handleTouchInMobile) {
+    @apply overflow-y-hidden overflow-x-auto md:overflow-x-hidden;
+  }
 }
+
 .carousel {
   @apply flex;
-  transition: transform 0.3s;
+  transition: transform 0.4s;
 }
 .carouselArrow {
-  @apply hidden md:flex absolute top-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white z-10 shadow-md;
+  @apply flex absolute top-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white z-10 shadow-md;
+
   &.back {
     @apply right-0;
+    &.isOut {
+      @apply translate-x-1/2;
+    }
   }
   &.forward {
     @apply left-0;
+    &.isOut {
+      @apply -translate-x-1/2;
+    }
+  }
+  & > i {
+    @apply text-xl;
   }
 }
